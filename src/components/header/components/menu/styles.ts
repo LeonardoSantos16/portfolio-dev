@@ -1,21 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from 'react-router-dom'
-
-export const Container = styled.div`
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem 1rem;
-    align-items: flex-end;
-    gap: 1.5rem;
-    width: 280px;
-    height: 736px;
-    right: 0px;
-    top: 64px;
-    background: ${({theme}) => theme.COLORS.surfacePrimary};
-    height: 100vh;
-`
-
+import media from "../../../../styles/media-query";
 export const MenuItems = styled(NavLink)`
     ${({ theme }) => theme.fonts.heeboSmall}
     color: ${({ theme }) => theme.COLORS.textSecondary};
@@ -30,12 +15,19 @@ export const MenuItems = styled(NavLink)`
 export const Line = styled.hr`
     width: 100%;
     border: 1px solid ${({theme}) => theme.COLORS.surfaceSecondary};
+    ${media.greaterThan('tablet')`
+        display: none;
+    `}
 `
 
 export const Actions = styled.div`
     display: flex;
     align-items: flex-end;
     gap: 1rem;
+
+    ${media.greaterThan('desktop')`
+        gap: 0.5rem;
+    `}
 `
 
 export const ButtonAction = styled.button`
@@ -51,4 +43,8 @@ export const ButtonAction = styled.button`
         border: 2px solid #F5F6F6;
         border-radius: 12px;
     }
+
+    ${media.greaterThan('tablet')`
+        background: ${({ theme}) => theme.COLORS.surfaceBackground};
+    `}
 `

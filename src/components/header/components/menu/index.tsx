@@ -1,11 +1,11 @@
 import { SunDim } from '@phosphor-icons/react'
 import * as S from './styles'
 
-const Sidebar = () =>{
-    // TODO: Configurar os ButtonsActions 
+// TODO: Configurar os ButtonsActions 
 
+const Menu = () => {
     return(
-        <S.Container>
+        <>
             <S.MenuItems to='/' end>Home</S.MenuItems>
             <S.MenuItems to='/about'>About</S.MenuItems>
             <S.MenuItems to='/projects'>Projects</S.MenuItems>
@@ -15,8 +15,8 @@ const Sidebar = () =>{
                 <S.ButtonAction><SunDim size={24}/></S.ButtonAction>
                 <S.ButtonAction><SunDim size={24}/></S.ButtonAction>
             </S.Actions>
-        </S.Container>
+        </>
     )
 }
 
-export default Sidebar;
+export default Menu;
