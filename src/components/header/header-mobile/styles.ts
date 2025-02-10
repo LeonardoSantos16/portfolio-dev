@@ -29,5 +29,6 @@ export const IconContainer = styled.div`
     justify-content: center;
     width: 48px;
     height: 48px;
-    color: ${({theme}) => theme.COLORS.textPrimary}
+    color: ${({theme}) => theme.COLORS.textPrimary};
+    cursor: pointer;
 `

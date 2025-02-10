@@ -4,11 +4,15 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from './styles/theme.ts'
 import HeaderMobile from './components/header/header-mobile/index.tsx'
 import { StyleGlobal } from './styles/global.ts'
+import { BrowserRouter } from 'react-router-dom'
 createRoot(document.getElementById('root')!).render(
-  <ThemeProvider theme={theme}>
-    <StrictMode>
-      <HeaderMobile />
-    </StrictMode>
-    <StyleGlobal />
-  </ThemeProvider>
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <StrictMode>
+        <HeaderMobile />
+      </StrictMode>
+      <StyleGlobal />
+    </ThemeProvider>
+  </BrowserRouter>
+
 )

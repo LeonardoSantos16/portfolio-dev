@@ -14,7 +14,8 @@ export const theme = {
         surfaceTertiary: '#4E4563',
         
         textPrimary: '#F5F6F6',
-        textSecondary: '#CDD0D4'
+        textSecondary: '#CDD0D4',
+        white: '#ffffff'
     },
     fonts,
     breakpoints
