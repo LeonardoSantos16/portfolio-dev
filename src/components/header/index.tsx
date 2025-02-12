@@ -4,7 +4,7 @@ import { List } from "@phosphor-icons/react";
 import Sidebar from './components/sidebar/sidebar-menu';
 import useMobile from '../../hooks/useMobile';
 import Menu from './components/menu';
-const Header = () =>{
+const Header = () => {
     const [openMenu, setOpenMenu] = useState(false)
     const isMobile = useMobile();
     const handleToggleMenu = () =>{

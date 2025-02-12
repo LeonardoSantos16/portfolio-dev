@@ -5,7 +5,7 @@ export const theme = {
     COLORS: {
 
         primaryColor: '#8A42DB',
-        primaryColor400: '#8A42DB',
+        primaryColor400: '#9955E8',
         secondaryColor: '#7DFFAF',
         
         surfaceBackground: '#171021',
