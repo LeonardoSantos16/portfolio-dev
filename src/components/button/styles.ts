@@ -28,4 +28,5 @@ export const Button = styled.button<ButtonStyleProps>`
 
 export const Text = styled.span`
     ${({theme}) => theme.fonts.heeboSmall};
+    color: ${({theme}) => theme.COLORS.textPrimary};
 `

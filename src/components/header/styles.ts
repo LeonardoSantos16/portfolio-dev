@@ -5,7 +5,6 @@ export const Container = styled.div`
     width: 100%;
     height: 64px;
     background: ${({ theme }) => theme.COLORS.surfaceBackground};
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
     top: 0;
     display: flex;
     align-items: center;
