@@ -8,6 +8,7 @@ import Header from './components/header'
 import Headline from './components/headline'
 import About from './components/about-section'
 import ProjectsSection from './components/project-section'
+import Contact from './components/contact/index.tsx'
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')!).render(
         <Headline />
         <About/>
         <ProjectsSection />
+        <Contact />
       </StrictMode>
       <StyleGlobal />
     </ThemeProvider>

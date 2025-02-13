@@ -12,7 +12,9 @@ export const StyleGlobal = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         min-width: 350px;
         background-color: ${({theme}) => theme.COLORS.surfaceBackground};
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     span{
