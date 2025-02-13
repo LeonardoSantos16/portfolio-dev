@@ -12,7 +12,7 @@ export const StyleGlobal = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         min-width: 350px;
         background-color: ${({theme}) => theme.COLORS.surfaceBackground};
-
+        
     }
 
     span{
@@ -28,6 +28,11 @@ export const StyleGlobal = createGlobalStyle`
     p{
         ${({ theme }) => theme.fonts.heeboSmall};
         color:  ${({ theme }) => theme.COLORS.textSecondary};
+    }
+
+    h3{
+        ${({ theme }) => theme.fonts.heeboMedium};
+        color: ${({ theme }) => theme.COLORS.textPrimary};
     }
 
 `
