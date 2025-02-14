@@ -20,7 +20,7 @@ export const Button = styled.button<ButtonStyleProps>`
     align-items: center;
     justify-content: center;
     width: ${({$width}) => $width || '100%'};
-
+    cursor: pointer;
     &:hover{
         background: ${({$backgroundHoverColor}) => $backgroundHoverColor || 'auto'};
     }
