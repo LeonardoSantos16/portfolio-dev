@@ -16,10 +16,6 @@ export const Content = styled.div`
     align-items: center;
     padding: 16px;
     width: 100%;
-
-    ${media.greaterThan('desktop')`
-        padding: 16px 80px;
-    `}
 `
 
 export const Logo = styled.h4`

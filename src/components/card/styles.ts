@@ -42,11 +42,9 @@ export const ProjectDescription = styled.p`
 export const DateProject = styled.div`
    ${({ theme }) => theme.fonts.heeboSmall};
     color: ${({ theme }) => theme.COLORS.textSecondary};
-
 `
 export const InfoProject = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-
 `
