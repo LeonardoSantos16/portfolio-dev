@@ -2,9 +2,29 @@ import { IoLogoNodejs, IoLogoReact } from "react-icons/io5";
 import TechIcon from "../../components/tech-icon";
 import * as S from './styles';
 import Button from "../../components/button";
-import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowLeft, ArrowUpRight} from "@phosphor-icons/react";
 import feedbackWidget from '../../assets/Project cover/Feedback Widget.png';
+import { api } from "../../hooks/api";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { PropsData } from "../home";
 const Project = () => {
+    const params = useParams()
+    const [data, setData] = useState<PropsData | null>(null)
+
+    const fetchRepositories = async (id : string | undefined) =>{
+        try{
+            const response = await api.get(`/repository/${id}`)
+            setData(response.data)
+        } catch(error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchRepositories(params.id);
+    }, [params.id])
+    
     return(
         <S.Container>
             <S.MainProject>
@@ -14,17 +34,14 @@ const Project = () => {
                 <img src={feedbackWidget} alt="image project" />
                 <S.ContentWrapper>
                     <S.InfoProject>
-                        <S.DateProject>Jul - Dec 2022</S.DateProject>
+                        <S.DateProject>{data?.date}</S.DateProject>
                         <S.TechContainer>
                                 <TechIcon Icon={IoLogoReact} color="#9955E8" size={24} />
                                 <TechIcon Icon={IoLogoNodejs} color="#9955E8" size={24} />
                         </S.TechContainer>
                     </S.InfoProject>
-                    <h1>Feedback Widget</h1>
-                    <p>My role: Full-stack developer <br /> Team: Marcus Souza (PM), Ilana Mallak (UX/UI Designer)<br/>
-                        We improved our CSAT from 4.4 to 4.8 after analysing custumer feedback provided on our product trought this widget. <br /> 
-                        I worked as the main developer of this features implementing the front-end using Tailwind and a Data Viz dashboard using Python to follow-up customer feedback and improve data analysis. <br /> 
-                        The main challenge was to create a flexible structure that could be used as an API across all our company web applications.</p>
+                    <h1>{data?.title}</h1>
+                    <p>{data?.description}</p>
                 </S.ContentWrapper>
             </S.MainProject>
             <S.Aside>

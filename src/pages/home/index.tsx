@@ -6,7 +6,7 @@ import ProjectsSection from "../../components/project-section";
 import { api } from "../../hooks/api";
 
 
-interface Data {
+export interface PropsData {
     id: number,
     title: string,
     date: string,
@@ -16,7 +16,7 @@ interface Data {
 }
 
 const Home = () => {
-    const [data, setData] = useState<Data[] | null>(null)
+    const [data, setData] = useState<PropsData[] | null>(null)
     useEffect(() => {
         const fetchData = async () => {
             try{

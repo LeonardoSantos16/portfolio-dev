@@ -1,7 +1,5 @@
 import Card from "../card";
 import Devlinks from '../../assets/Project cover/DevLinks.png';
-import FeedBack from '../../assets/Project cover/Feedback Widget.png';
-import Nutritional from '../../assets/Project cover/Feedback Widget.png';
 import Button from "../button";
 import { ArrowRight } from "@phosphor-icons/react";
 import * as S from './styles';
@@ -15,11 +13,11 @@ interface Data {
     link_github: string
 }
 
-interface PropsData {
+interface PropsCardData {
     data: Data[] | null
 }
 
-const ProjectsSection = ({data} : PropsData) => {
+const ProjectsSection = ({data} : PropsCardData) => {
     return(
         <S.Container>
             <S.HeadProject>
