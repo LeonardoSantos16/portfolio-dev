@@ -1,4 +1,3 @@
-import { IoLogoNodejs, IoLogoReact } from "react-icons/io5";
 import TechIcon from "../../components/tech-icon";
 import * as S from './styles';
 import Button from "../../components/button";
@@ -9,15 +8,21 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PropsData } from "../home";
 import {format} from 'date-fns'
+import { iconMapping } from "../../utils";
 
+export interface PropsIcon {
+    name_icon: string
+}
 const Project = () => {
     const params = useParams()
     const [data, setData] = useState<PropsData | null>(null)
-
+    const [icons, setIcons] = useState<PropsIcon[] | null>(null)
     const fetchRepositories = async (id : string | undefined) =>{
         try{
             const response = await api.get(`/repository/${id}`)
+            const responseIcons = await api.get(`/iconRepository/${id}`)
             setData(response.data)
+            setIcons(responseIcons.data.getIcon)
         } catch(error) {
             console.error(error)
         }
@@ -38,8 +43,20 @@ const Project = () => {
                     <S.InfoProject>
                         <S.DateProject>{ data && format(data.date, 'MMMM dd, yyyy')}</S.DateProject>
                         <S.TechContainer>
-                                <TechIcon Icon={IoLogoReact} color="#9955E8" size={24} />
-                                <TechIcon Icon={IoLogoNodejs} color="#9955E8" size={24} />
+                            {icons &&
+                                icons.map((icon, index) => {
+                                    const IconComponent = iconMapping[icon.name_icon];
+                                    if(IconComponent){
+                                        return(
+                                            <TechIcon key={index} Icon={IconComponent} color="#9955E8" size={24} />
+                                        )
+                                    }
+                                   return null;
+                                }
+
+                                )
+                            }
+
                         </S.TechContainer>
                     </S.InfoProject>
                     <h1>{data?.title}</h1>
