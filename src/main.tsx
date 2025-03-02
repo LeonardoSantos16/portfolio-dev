@@ -4,10 +4,9 @@ import { ThemeProvider } from 'styled-components'
 import { theme } from './styles/theme.ts'
 import { StyleGlobal } from './styles/global.ts'
 import { BrowserRouter } from 'react-router-dom'
-import Layout from './components/layout/index.tsx'
-import Header from './components/header/index.tsx'
-import Footer from './components/footer/index.tsx'
-import { AppRoutes } from './routes/index.tsx'
+import Header from './components/header'
+import Footer from './components/footer'
+import { AppRoutes } from './routes'
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>

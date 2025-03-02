@@ -6,7 +6,20 @@ import Button from "../button";
 import { ArrowRight } from "@phosphor-icons/react";
 import * as S from './styles';
 
-const ProjectsSection = () => {
+interface Data {
+    id: number,
+    title: string,
+    date: string,
+    description: string,
+    link_demo: string,
+    link_github: string
+}
+
+interface PropsData {
+    data: Data[] | null
+}
+
+const ProjectsSection = ({data} : PropsData) => {
     return(
         <S.Container>
             <S.HeadProject>
@@ -14,9 +27,13 @@ const ProjectsSection = () => {
                 <h2>Take a look at my highlighted projects</h2>
             </S.HeadProject>
             <S.CardsWrapper>
-                <Card title="DevLinks" date="Jul - Dec 2022" description="A link agragator for social media." image={Devlinks}/>
-                <Card title="Feedback Widget" date="Jul - Dec 2022" description="A feedback widget to improve your applications based on users feedback." image={FeedBack}/>
-                <Card title="Nutritional table" date="Jul - Dec 2022" description="An app to improve your eating habits based on the nutritional values." image={Nutritional}/>
+                {data && 
+                    data.map((repository, index) => {
+                        return(
+                            <Card key={index} title={repository.title} date={repository.date} description={repository.description} image={Devlinks} />
+                        )
+                    })
+                }
             </S.CardsWrapper>
             <Button Icon={ArrowRight} orderIcon='row-reverse' text='See all' backgroundHoverColor='#4E4563' backgroundColor='#413A4F'  width='128px'/> 
         </S.Container>
