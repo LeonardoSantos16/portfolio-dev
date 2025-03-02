@@ -8,6 +8,8 @@ import { api } from "../../hooks/api";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PropsData } from "../home";
+import {format} from 'date-fns'
+
 const Project = () => {
     const params = useParams()
     const [data, setData] = useState<PropsData | null>(null)
@@ -24,7 +26,7 @@ const Project = () => {
     useEffect(() => {
         fetchRepositories(params.id);
     }, [params.id])
-    
+
     return(
         <S.Container>
             <S.MainProject>
@@ -34,7 +36,7 @@ const Project = () => {
                 <img src={feedbackWidget} alt="image project" />
                 <S.ContentWrapper>
                     <S.InfoProject>
-                        <S.DateProject>{data?.date}</S.DateProject>
+                        <S.DateProject>{ data && format(data.date, 'MMMM dd, yyyy')}</S.DateProject>
                         <S.TechContainer>
                                 <TechIcon Icon={IoLogoReact} color="#9955E8" size={24} />
                                 <TechIcon Icon={IoLogoNodejs} color="#9955E8" size={24} />
