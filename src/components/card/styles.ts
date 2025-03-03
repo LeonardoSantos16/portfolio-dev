@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import media from "../../styles/media-query";
 
-export const Container = styled.div`
+export const Container = styled.button`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -11,6 +11,7 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.COLORS.surfacePrimary};
     border-radius: 16px;
     justify-content: space-between;
+    cursor: pointer;
     img{
         height: 160px;
         width: 100%;

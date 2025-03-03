@@ -5,6 +5,7 @@ import { iconMapping } from "../../utils";
 import { api } from "../../hooks/api";
 import { useCallback, useEffect, useState } from "react";
 import { PropsIcon } from "../../pages/projects";
+import { useNavigate } from "react-router-dom";
 interface CardProps{
     title: string
     description: string
@@ -13,6 +14,7 @@ interface CardProps{
     id: number
 }
 const Card = ({title, description, date, image, id} : CardProps) => {
+    const navigate = useNavigate();
     const [icons, setIcons] = useState<PropsIcon[] | null>(null)
     const fetchIcons = useCallback(async () => {
         try {
@@ -23,12 +25,16 @@ const Card = ({title, description, date, image, id} : CardProps) => {
         }
     }, []);
 
+    const handleClick = () => {
+        navigate(`/projects/${id}`)
+    }
+
     useEffect(() => {
         fetchIcons();
     }, [fetchIcons]);
     
     return(
-        <S.Container>
+        <S.Container onClick={handleClick}>
             <img src={image} alt="image card" />
                 <S.InfoProject>
                     <S.DateProject>{format(date, 'MMMM dd, yyyy')}</S.DateProject>

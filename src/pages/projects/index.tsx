@@ -4,16 +4,16 @@ import Button from "../../components/button";
 import { ArrowLeft, ArrowUpRight} from "@phosphor-icons/react";
 import feedbackWidget from '../../assets/Project cover/Feedback Widget.png';
 import { api } from "../../hooks/api";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { PropsData } from "../home";
 import {format} from 'date-fns'
 import { iconMapping } from "../../utils";
-
 export interface PropsIcon {
     name_icon: string
 }
 const Project = () => {
+    const navigate = useNavigate()
     const params = useParams()
     const [data, setData] = useState<PropsData | null>(null)
     const [icons, setIcons] = useState<PropsIcon[] | null>(null)
@@ -28,6 +28,10 @@ const Project = () => {
         }
     }
 
+    const handleBackButton = () => {
+        navigate(-1);
+    }
+
     useEffect(() => {
         fetchRepositories(params.id);
     }, [params.id])
@@ -35,7 +39,7 @@ const Project = () => {
     return(
         <S.Container>
             <S.MainProject>
-                <S.ButtonBack>
+                <S.ButtonBack onClick={handleBackButton}>
                     <ArrowLeft size={24} color="#ffffff"/>
                 </S.ButtonBack>
                 <img src={feedbackWidget} alt="image project" />
