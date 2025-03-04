@@ -8,10 +8,10 @@ const Footer = () => {
                 Leonardo Mendes 2025. Layout based on Rocketseat’s template.
             </S.Copyright>
             <S.ContentSocial>
-             <S.MenuItem>
+             <S.MenuItem href='https://github.com/LeonardoSantos16' target="_blank">
                 GitHub
              </S.MenuItem>
-             <S.MenuItem>
+             <S.MenuItem href='https://www.linkedin.com/in/leonardo-mendes-ferreira-/' target="_blank">
                 LinkedIn
              </S.MenuItem>
                 <ArrowUp size={24} color='#CDD0D4'/>

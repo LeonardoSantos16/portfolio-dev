@@ -44,7 +44,7 @@ export const Socials = styled.div`
     gap: 8px;
 `
 
-export const ButtonSocial = styled.button`
+export const ButtonSocial = styled.a`
     padding: 0.75rem;
     width: 48px;
     height: 48px;

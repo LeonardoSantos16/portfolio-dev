@@ -13,8 +13,8 @@ const Contact = () => {
                     <h2>Enjoyed my work? Let’s work together</h2>
                     <p>I’m always up for a chat. Pop me an email at hi@linalevi.com or give me a shout on social media. </p>
                     <S.Socials>
-                        <S.ButtonSocial><IoLogoGithub color="#F5F6F6" size={24}/></S.ButtonSocial>
-                        <S.ButtonSocial><IoLogoLinkedin color="#F5F6F6" size={24}/></S.ButtonSocial>
+                        <S.ButtonSocial href='https://github.com/LeonardoSantos16' target="_blank"><IoLogoGithub color="#F5F6F6" size={24}/></S.ButtonSocial>
+                        <S.ButtonSocial href='https://www.linkedin.com/in/leonardo-mendes-ferreira-/' target="_blank"><IoLogoLinkedin color="#F5F6F6" size={24}/></S.ButtonSocial>
                     </S.Socials>
                 </S.Profile>
                 <S.Forms>

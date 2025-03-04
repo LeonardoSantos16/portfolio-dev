@@ -10,6 +10,7 @@ export const Container = styled.div`
     max-width: 103.75rem;
     margin: 32px auto;
     justify-content: center;
+    min-height: 100vh;
     ${media.greaterThan('tablet')`
         flex-direction: row;
         gap: 1.5rem;
@@ -93,4 +94,8 @@ export const Aside = styled.aside`
         height: 15.5rem;
         align-self: auto;
     `}
+
+    >a{
+        text-decoration: none;
+    }
 `

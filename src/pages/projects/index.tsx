@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { PropsData } from "../home";
 import {format} from 'date-fns'
 import { iconMapping } from "../../utils";
+import { Link } from "react-router-dom";
 export interface PropsIcon {
     name_icon: string
 }
@@ -69,8 +70,8 @@ const Project = () => {
             </S.MainProject>
             <S.Aside>
                 <h3>Take a look at this project</h3>
-                <Button Icon={ArrowUpRight} orderIcon='row-reverse' text='Live demo' backgroundHoverColor='#9955E8' backgroundColor='#8A42DB' width='312px' /> 
-                <Button Icon={ArrowUpRight} orderIcon='row-reverse' text='Code' backgroundHoverColor='#4E4563' backgroundColor='#413A4F'  width='312px'/> 
+                <a href={data?.link_demo} target="_blank"><Button Icon={ArrowUpRight} orderIcon='row-reverse' text='Live demo' backgroundHoverColor='#9955E8' backgroundColor='#8A42DB' width='312px' /> </a>
+                <a href={data?.link_github} target="_blank"><Button Icon={ArrowUpRight} orderIcon='row-reverse' text='Code' backgroundHoverColor='#4E4563' backgroundColor='#413A4F'  width='312px'/> </a>
             </S.Aside>
         </S.Container>
     )
