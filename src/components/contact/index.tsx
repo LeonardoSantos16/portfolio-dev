@@ -7,14 +7,14 @@ import * as S from './styles';
 import officeWork from '../../assets/Office work-bro.png';
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 const Contact = () => {
-    const form = useRef<HTMLFormElement>();
+    const form = useRef<HTMLFormElement>(null);
 
     const sendEmail = (e: React.FormEvent) =>{
         e.preventDefault();
         if(form.current){
             emailjs.sendForm('service_syc2kl7', 'template_gla7cj9', form.current, 'BN7D-gwERwiJLLuOU').then(() => {
                 alert('Mensagem enviada com sucesso!');
-                form.current.reset();
+                form.current!.reset();
             })
             .catch((error) => {
                 alert('Erro ao enviar a mensagem, tente novamente');

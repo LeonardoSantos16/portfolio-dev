@@ -1,9 +1,10 @@
 import { IconProps } from "@phosphor-icons/react"
 import * as S from './styles'
+import { ButtonHTMLAttributes } from "react"
 
 type Direction = "row" | "row-reverse"
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     Icon: React.ComponentType<IconProps>
     text: string
     backgroundColor: string
