@@ -11,9 +11,9 @@ interface ButtonProps {
     width?: string
     orderIcon: Direction
 }
-const Button = ({Icon, text, backgroundColor, width, orderIcon, backgroundHoverColor} : ButtonProps) => {
+const Button = ({Icon, text, backgroundColor, width, orderIcon, backgroundHoverColor, ...rest} : ButtonProps) => {
     return(
-        <S.Button $backgroundColor={backgroundColor} $backgroundHoverColor={backgroundHoverColor} $width={width} $orderIcon={orderIcon}>
+        <S.Button {...rest} $backgroundColor={backgroundColor} $backgroundHoverColor={backgroundHoverColor} $width={width} $orderIcon={orderIcon}>
             <Icon size={24}/>
             <S.Text>{text}</S.Text>
         </S.Button>
