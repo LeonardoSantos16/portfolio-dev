@@ -5,40 +5,38 @@ import Headline from "../../components/headline";
 import ProjectsSection from "../../components/project-section";
 import { api } from "../../hooks/api";
 
-
 export interface PropsData {
-    id: number,
-    title: string,
-    date: string,
-    description: string,
-    link_demo: string,
-    link_github: string
+  id: number;
+  title: string;
+  date: string;
+  description: string;
+  link_demo: string;
+  link_github: string;
 }
 
 const Home = () => {
-    const [data, setData] = useState<PropsData[] | null>(null)
-    useEffect(() => {
-        const fetchData = async () => {
-            try{
-                const response = await api.get('/repository');
-                setData(response.data);
-            } catch (error){
-                console.error(error)
-            }
-        }
-        fetchData()
-    }, [])
+  const [data, setData] = useState<PropsData[] | null>(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/repository");
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
-    
-    console.log(data)
-    return(
-        <>
-            <Headline />
-            <About/>
-            <ProjectsSection data={data}/>
-            <Contact />
-        </>
-    )
-}
+  console.log(data);
+  return (
+    <>
+      <Headline />
+      <About />
+      <ProjectsSection data={data} />
+      <Contact />
+    </>
+  );
+};
 
 export default Home;

@@ -1,5 +1,5 @@
-import {generateMedia} from 'styled-media-query';
-import {breakpoints} from './breakpoints';
+import { generateMedia } from "styled-media-query";
+import { breakpoints } from "./breakpoints";
 
 const media = generateMedia(breakpoints);
 

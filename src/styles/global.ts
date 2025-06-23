@@ -11,15 +11,15 @@ export const StyleGlobal = createGlobalStyle`
         width: 100%;
         -webkit-font-smoothing: antialiased;
         min-width: 350px;
-        background-color: ${({theme}) => theme.COLORS.surfaceBackground};
+        background-color: ${({ theme }) => theme.COLORS.surfaceBackground};
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     span{
-        ${({theme}) => theme.fonts.kalamSmal};
-        color:  ${({theme}) => theme.COLORS.secondaryColor};
+        ${({ theme }) => theme.fonts.kalamSmal};
+        color:  ${({ theme }) => theme.COLORS.secondaryColor};
     }
 
     h2{
@@ -37,4 +37,4 @@ export const StyleGlobal = createGlobalStyle`
         color: ${({ theme }) => theme.COLORS.textPrimary};
     }
 
-`
+`;

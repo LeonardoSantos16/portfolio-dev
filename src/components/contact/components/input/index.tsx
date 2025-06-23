@@ -1,8 +1,6 @@
-import * as S from './styles'
+import * as S from "./styles";
 
-const Input = ({...rest}) => {
-    return(
-        <S.ContentInput {...rest} />
-    )
-}
+const Input = ({ ...rest }) => {
+  return <S.ContentInput {...rest} />;
+};
 export default Input;
