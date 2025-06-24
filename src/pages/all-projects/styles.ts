@@ -21,7 +21,6 @@ export const Container = styled.div`
     ${({ theme }) => theme.fonts.heeboMedium};
     color: ${({ theme }) => theme.COLORS.textPrimary};
     margin-top: 2rem;
-    margin-bottom: 7rem;
   }
 `;
 
@@ -37,4 +36,12 @@ export const WrapperCard = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
+`;
+
+export const Tags = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 7rem;
 `;

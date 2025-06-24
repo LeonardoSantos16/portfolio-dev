@@ -7,6 +7,7 @@ interface ButtonStyleProps {
   $width?: string;
   $orderIcon: Direction;
   $backgroundHoverColor: string;
+  $height?: string;
 }
 export const Button = styled.button<ButtonStyleProps>`
   display: flex;
@@ -17,7 +18,7 @@ export const Button = styled.button<ButtonStyleProps>`
   background: ${({ $backgroundColor, theme }) =>
     $backgroundColor || theme.COLORS.surfaceSecondary};
   border-radius: 8px;
-  height: 56px;
+  height: ${({ $height }) => $height || "56px"};
   align-items: center;
   justify-content: center;
   width: ${({ $width }) => $width || "100%"};

@@ -9,7 +9,9 @@ export const Container = styled.button`
   background: ${({ theme }) => theme.COLORS.surfacePrimary};
   box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0;
   &:hover {
     border: 1.5px solid #7dffaf;
@@ -60,6 +62,7 @@ export const ContentLink = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 0.5rem;
 `;
 
 export const Wrapper = styled.div`

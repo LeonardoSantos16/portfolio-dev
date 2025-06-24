@@ -16,7 +16,7 @@ const CardProject = (props: CardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/projects/${props.id}`);
+    navigate(`/project/${props.id}`);
   };
 
   return (
@@ -35,6 +35,7 @@ const CardProject = (props: CardProps) => {
               backgroundHoverColor="#9955E8"
               backgroundColor="#8A42DB"
               width="148px"
+              height="42px"
               orderIcon={"row"}
             />
           )}
@@ -45,6 +46,7 @@ const CardProject = (props: CardProps) => {
               backgroundHoverColor="#b2fffa "
               backgroundColor="#5ecea0"
               width="128px"
+              height="42px"
               orderIcon={"row"}
             />
           )}

@@ -10,6 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor: string;
   backgroundHoverColor: string;
   width?: string;
+  height?: string;
   orderIcon: Direction;
 }
 const Button = ({
@@ -17,6 +18,7 @@ const Button = ({
   text,
   backgroundColor,
   width,
+  height,
   orderIcon,
   backgroundHoverColor,
   ...rest
@@ -24,6 +26,7 @@ const Button = ({
   return (
     <S.Button
       {...rest}
+      $height={height}
       $backgroundColor={backgroundColor}
       $backgroundHoverColor={backgroundHoverColor}
       $width={width}
