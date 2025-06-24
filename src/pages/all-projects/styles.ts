@@ -42,6 +42,12 @@ export const Tags = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  flex-wrap: wrap;
   margin-top: 3rem;
   margin-bottom: 7rem;
+`;
+
+export const WrapperButton = styled.div`
+  margin: 32px 0;
+  align-self: center;
 `;

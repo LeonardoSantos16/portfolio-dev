@@ -3,6 +3,9 @@ import * as S from "./styles";
 import devImage from "../../assets/Project cover/DevLinks.png";
 import Tag from "./components/tag";
 import { useState } from "react";
+import { ArrowDown } from "@phosphor-icons/react";
+
+import Button from "../../components/button";
 enum ProjectCategory {
   WEB_DEVELOPMENT = "Web Development",
   MOBILE_DEVELOPMENT = "Mobile Development",
@@ -76,6 +79,17 @@ const Projects = () => {
           linkGithub="test"
         />
       </S.WrapperCard>
+
+      <S.WrapperButton>
+        <Button
+          Icon={ArrowDown}
+          orderIcon="row-reverse"
+          text="Carregar mais"
+          backgroundHoverColor="#4E4563"
+          backgroundColor="#413A4F"
+          width="172px"
+        />
+      </S.WrapperButton>
     </S.Container>
   );
 };
