@@ -1,7 +1,7 @@
 import { Link as LinkIcon, GithubLogo } from "@phosphor-icons/react";
-import TechIcon from "../tech-icon";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
+import Button from "../button";
 
 interface CardProps {
   title: string;
@@ -25,23 +25,28 @@ const CardProject = (props: CardProps) => {
       <S.ContentText>
         <h1>{props.title}</h1>
         <p>{props.description}</p>
-        <span>Tech stack :</span>
+        <span>HTML , JavaScript, SASS, React</span>
 
         <S.ContentLink>
           {props.linkDemo && (
-            <S.Wrapper>
-              <TechIcon Icon={LinkIcon} size={20} color="#F5F6F6" />
-              {
-                // TODO: fazer a lógica para desabilitar quando não tiver link
-              }
-              <S.StyledLink to={props.linkDemo}>Vizualizar site</S.StyledLink>
-            </S.Wrapper>
+            <Button
+              Icon={LinkIcon}
+              text="Vizualizar site"
+              backgroundHoverColor="#9955E8"
+              backgroundColor="#8A42DB"
+              width="148px"
+              orderIcon={"row"}
+            />
           )}
           {props.linkGithub && (
-            <S.Wrapper>
-              <TechIcon Icon={GithubLogo} size={20} color="#000000" />
-              <S.StyledLink to={props.linkGithub}>Ver código</S.StyledLink>
-            </S.Wrapper>
+            <Button
+              Icon={GithubLogo}
+              text="Ver código"
+              backgroundHoverColor="#b2fffa "
+              backgroundColor="#5ecea0"
+              width="128px"
+              orderIcon={"row"}
+            />
           )}
         </S.ContentLink>
       </S.ContentText>

@@ -21,7 +21,7 @@ export const Image = styled.img`
   max-width: 23.4375rem;
   width: 100%;
   height: 260px;
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px;
 `;
 
 export const ContentText = styled.div`
@@ -35,17 +35,22 @@ export const ContentText = styled.div`
   > h1 {
     ${({ theme }) => theme.fonts.heeboBig};
     color: ${({ theme }) => theme.COLORS.textPrimary};
+    text-align: left;
   }
 
   > p {
     color: ${({ theme }) => theme.COLORS.textPrimary};
     ${({ theme }) => theme.fonts.heeboMedium};
-    min-height: fit-content;
+    min-height: 8.125rem;
     text-align: start;
   }
 
   > span {
-    color: ${({ theme }) => theme.COLORS.gradientHeading};
+    background-image: ${({ theme }) => theme.COLORS.gradientHeading};
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     ${({ theme }) => theme.fonts.heeboSmall};
   }
 `;
