@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { iconMapping } from "../../utils";
 import { api } from "../../hooks/api";
 import { useCallback, useEffect, useState } from "react";
-import { PropsIcon } from "../../pages/projects";
+import { PropsIcon } from "../../pages/project";
 import { useNavigate } from "react-router-dom";
 interface CardProps {
   title: string;
@@ -23,7 +23,7 @@ const Card = ({ title, description, date, image, id }: CardProps) => {
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  }, [id]);
 
   const handleClick = () => {
     navigate(`/projects/${id}`);
