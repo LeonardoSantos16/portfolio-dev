@@ -1,4 +1,5 @@
 import TechIcon from "../../components/tech-icon";
+import InfoWork from "./components/info-work";
 import Section from "./components/section";
 import * as S from "./styles";
 import { IoLogoJavascript } from "react-icons/io5";
@@ -15,21 +16,53 @@ const AboutMe = () => {
             a set of static files: HTML/CSS/JS.
           </S.InfoProfile>
         </Section>
-        <Section title="Experiência de Trabalho"></Section>
+        <Section title="Experiência de Trabalho">
+          <InfoWork
+            title="Junior Web Developer"
+            date="Sep 2021 - Dec 2021"
+            type="Full Time"
+            location="Bengaluru"
+            companyName="Dr. Rajkumar’s Learning App"
+          />
+          <InfoWork
+            title="Web Development Intern"
+            date="Sep 2021 - Dec 2021"
+            type="Internship"
+            location="Bengaluru"
+            companyName="IonPixelz Web Solutions"
+          />
+          <InfoWork
+            title="SEO / SEM Specialist"
+            date="Sep 2021 - Dec 2021"
+            type="Internship"
+            location="Bengaluru"
+            companyName="HAAPS"
+          />
+        </Section>
+        <Section title="Education">
+          <InfoWork
+            title="Bachelor in Electronics & Communication"
+            date="Aug 2015 - Dec 2020"
+            type="Full Time"
+            companyName="Bangalore Instutute of Technology"
+          />
+        </Section>
       </main>
       <aside>
         <Section title="Tech Stack">
           <S.WrapperIcon>
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={48} color={"#E44F26"} />
+            <S.StyleIcon>
+              <TechIcon Icon={IoLogoJavascript} size={48} color={"#F5DE19"} />
+            </S.StyleIcon>
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#924e3b"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
           </S.WrapperIcon>
         </Section>
       </aside>

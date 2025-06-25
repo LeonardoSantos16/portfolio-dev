@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  max-width: 76rem;
-  width: 100%;
+  width: 76rem;
+  align-self: normal;
+  justify-content: space-between;
+  margin: 4rem auto;
+
   > main {
     display: flex;
     flex-direction: column;
@@ -20,17 +23,22 @@ export const Container = styled.div`
 
 export const InfoProfile = styled.p`
   ${({ theme }) => theme.fonts.heeboMedium};
-  color: ${({ theme }) => theme.COLORS.surfaceSecondary};
+  color: ${({ theme }) => theme.COLORS.textSecondary};
 `;
 
 export const WrapperIcon = styled.div`
   display: grid;
-  grid-auto-columns: auto;
+  grid-template-columns: 100px 100px 100px;
+  row-gap: 20px;
 `;
 
-export const InfoWork = styled.div`
+export const StyleIcon = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 75px;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  background: #2c243b;
+  padding: 8px;
+  border-radius: 16px;
 `;
