@@ -1,10 +1,24 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+const StylePattern = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 75px;
+`;
+
+export const Head = styled(StylePattern)`
+  margin-bottom: 0.625rem;
+`;
+
+export const BottomStyle = styled(StylePattern)`
+  margin-top: 1rem;
+  margin-bottom: 4px;
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   border-bottom: 1px solid #ebeaed;
 `;
 
@@ -47,3 +61,5 @@ export const Box = styled.div`
   flex-direction: column;
   gap: 8px;
 `;
+
+export const Descricao = styled.p``;

@@ -9,7 +9,7 @@ const Menu = () => {
       <S.MenuItems to="/" end>
         Home
       </S.MenuItems>
-      <S.MenuItems to="/about">About</S.MenuItems>
+      <S.MenuItems to="/about-me">About</S.MenuItems>
       <S.MenuItems to="/projects">Projects</S.MenuItems>
       <S.MenuItems to="/contact">Contact</S.MenuItems>
       <S.Line />

@@ -4,7 +4,7 @@ import Contact from "../../components/contact";
 import Headline from "../../components/headline";
 import ProjectsSection from "../../components/project-section";
 import { api } from "../../hooks/api";
-
+import { Container } from "./styles";
 export interface PropsData {
   id: number;
   title: string;
@@ -30,12 +30,12 @@ const Home = () => {
 
   console.log(data);
   return (
-    <>
+    <Container>
       <Headline />
       <About />
       <ProjectsSection data={data} />
       <Contact />
-    </>
+    </Container>
   );
 };
 

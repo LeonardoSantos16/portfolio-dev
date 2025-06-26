@@ -10,9 +10,23 @@ interface InfoWorkProps {
 import TechIcon from "../../../../components/tech-icon";
 const InfoWork = (props: InfoWorkProps) => {
   return (
-    <S.Container>
-      <div>
+    <S.Info>
+      <S.Head>
         <S.StyleTitle>{props.title}</S.StyleTitle>
+        <S.Box>
+          <S.StyleType>
+            <S.TextStyle>{props.type}</S.TextStyle>
+          </S.StyleType>
+        </S.Box>
+      </S.Head>
+      <S.TextStyle>
+        Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod
+        tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+        nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit
+        in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+      </S.TextStyle>
+      <S.BottomStyle>
         <S.Content>
           <S.Wrapper>
             <TechIcon Icon={FaRegBuilding} size={16} color="#ffffff" />
@@ -25,14 +39,9 @@ const InfoWork = (props: InfoWorkProps) => {
             </S.Wrapper>
           )}
         </S.Content>
-      </div>
-      <S.Box>
-        <S.StyleType>
-          <S.TextStyle>{props.type}</S.TextStyle>
-        </S.StyleType>
         <S.TextStyle>{props.date}</S.TextStyle>
-      </S.Box>
-    </S.Container>
+      </S.BottomStyle>
+    </S.Info>
   );
 };
 
