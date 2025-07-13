@@ -5,15 +5,7 @@ import Headline from '../../components/headline'
 import ProjectsSection from '../../components/project-section'
 import { api } from '../../hooks/api'
 import { Container } from './styles'
-export interface PropsData {
-  id: number
-  title: string
-  date: string
-  description: string
-  linkDemo: string
-  shortDescription: string
-  linkGithub: string
-}
+import { PropsData } from '../../types/api-interface'
 
 const Home = () => {
   const [data, setData] = useState<PropsData[] | null>(null)
