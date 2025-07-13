@@ -31,7 +31,6 @@ const Projects = () => {
     }
     fetchRepositoriesFilteredCategory()
   }, [activeCategory])
-  console.log('🚀 ~ Projects ~ data:', data)
 
   return (
     <S.Container>

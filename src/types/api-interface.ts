@@ -7,6 +7,10 @@ export enum ProjectCategory {
   ALL = '',
 }
 
+export type TypeExperience = {
+  type: 'WORK' | 'EDUCATION'
+}
+
 export const categoryDisplayNames: Record<ProjectCategory, string> = {
   [ProjectCategory.WEB_DEVELOPMENT]: 'Desenvolvimento Web',
   [ProjectCategory.MOBILE_DEVELOPMENT]: 'Desenvolvimento Mobile',
@@ -26,4 +30,16 @@ export interface PropsData {
   linkGithub: string
   highlighted?: boolean
   category: ProjectCategory
+}
+
+export interface PropsExperience {
+  id: number
+  title: string
+  description: string
+  startDate: string
+  endDate: string
+  location: string
+  organization: string
+  type: TypeExperience
+  mode: string
 }

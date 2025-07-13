@@ -1,13 +1,13 @@
-import { FaRegBuilding, FaSearchLocation } from "react-icons/fa";
-import * as S from "./styles";
+import { FaRegBuilding, FaSearchLocation } from 'react-icons/fa'
+import * as S from './styles'
 interface InfoWorkProps {
-  title: string;
-  date: string;
-  type: string;
-  companyName: string;
-  location?: string;
+  title: string
+  date: string
+  mode: string
+  companyName: string
+  location?: string
 }
-import TechIcon from "../../../../components/tech-icon";
+import TechIcon from '../../../../components/tech-icon'
 const InfoWork = (props: InfoWorkProps) => {
   return (
     <S.Info>
@@ -15,7 +15,7 @@ const InfoWork = (props: InfoWorkProps) => {
         <S.StyleTitle>{props.title}</S.StyleTitle>
         <S.Box>
           <S.StyleType>
-            <S.TextStyle>{props.type}</S.TextStyle>
+            <S.TextStyle>{props.mode}</S.TextStyle>
           </S.StyleType>
         </S.Box>
       </S.Head>
@@ -42,7 +42,7 @@ const InfoWork = (props: InfoWorkProps) => {
         <S.TextStyle>{props.date}</S.TextStyle>
       </S.BottomStyle>
     </S.Info>
-  );
-};
+  )
+}
 
-export default InfoWork;
+export default InfoWork

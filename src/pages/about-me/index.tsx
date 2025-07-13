@@ -1,10 +1,49 @@
-import TechIcon from "../../components/tech-icon";
-import InfoWork from "./components/info-work";
-import Section from "./components/section";
-import * as S from "./styles";
-import { IoLogoJavascript } from "react-icons/io5";
+import { useEffect, useState } from 'react'
+import TechIcon from '../../components/tech-icon'
+import InfoWork from './components/info-work'
+import Section from './components/section'
+import * as S from './styles'
+import { IoLogoJavascript } from 'react-icons/io5'
+import { api } from '../../hooks/api'
+import { PropsExperience } from '../../types/api-interface'
+import { iconMapping } from '../../utils'
+import { PropsIcon } from '../project'
 
 const AboutMe = () => {
+  const [experiencesWork, setExperiencesWork] = useState<PropsExperience[]>()
+  const [experiencesEducation, setExperiencesEducation] =
+    useState<PropsExperience[]>()
+  const [icons, setIcons] = useState<PropsIcon[] | null>(null)
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const responseWork = await api.get<PropsExperience[]>(
+          `experiences?type=WORK`
+        )
+        const responseEducation = await api.get<PropsExperience[]>(
+          `experiences?type=EDUCATION`
+        )
+        setExperiencesWork(responseWork.data)
+        setExperiencesEducation(responseEducation.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchExperiences()
+  }, [])
+
+  useEffect(() => {
+    const fetchIcons = async () => {
+      try {
+        const response = await api.get('icon')
+        setIcons(response.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchIcons()
+  }, [])
+
   return (
     <S.Container>
       <main>
@@ -17,57 +56,60 @@ const AboutMe = () => {
           </S.InfoProfile>
         </Section>
         <Section title="Experiência de Trabalho">
-          <InfoWork
-            title="Junior Web Developer"
-            date="Sep 2021 - Dec 2021"
-            type="Full Time"
-            location="Bengaluru"
-            companyName="Dr. Rajkumar’s Learning App"
-          />
-          <InfoWork
-            title="Web Development Intern"
-            date="Sep 2021 - Dec 2021"
-            type="Internship"
-            location="Bengaluru"
-            companyName="IonPixelz Web Solutions"
-          />
-          <InfoWork
-            title="SEO / SEM Specialist"
-            date="Sep 2021 - Dec 2021"
-            type="Internship"
-            location="Bengaluru"
-            companyName="HAAPS"
-          />
+          {experiencesWork &&
+            experiencesWork.map((experience) => {
+              return (
+                <InfoWork
+                  title={experience.title}
+                  date={experience.endDate}
+                  mode={experience.mode}
+                  companyName={experience.organization}
+                />
+              )
+            })}
         </Section>
         <Section title="Education">
-          <InfoWork
-            title="Bachelor in Electronics & Communication"
-            date="Aug 2015 - Dec 2020"
-            type="Full Time"
-            companyName="Bangalore Instutute of Technology"
-          />
+          {experiencesEducation &&
+            experiencesEducation.map((experience) => {
+              return (
+                <InfoWork
+                  title={experience.title}
+                  date={experience.endDate}
+                  mode={experience.mode}
+                  companyName={experience.organization}
+                />
+              )
+            })}
         </Section>
       </main>
       <aside>
         <Section title="Tech Stack">
           <S.WrapperIcon>
             <S.StyleIcon>
-              <TechIcon Icon={IoLogoJavascript} size={48} color={"#F5DE19"} />
+              <TechIcon Icon={IoLogoJavascript} size={48} color={'#F5DE19'} />
             </S.StyleIcon>
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#924e3b"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
-            <TechIcon Icon={IoLogoJavascript} size={72} color={"#E44F26"} />
+            {icons &&
+              icons.map((icon, index) => {
+                const IconComponent = iconMapping[icon.name_icon]
+                if (IconComponent) {
+                  return (
+                    <S.StyleIcon>
+                      <TechIcon
+                        key={index}
+                        Icon={IconComponent}
+                        color="#F5DE19"
+                        size={48}
+                      />
+                    </S.StyleIcon>
+                  )
+                }
+                return null
+              })}
           </S.WrapperIcon>
         </Section>
       </aside>
     </S.Container>
-  );
-};
+  )
+}
 
-export default AboutMe;
+export default AboutMe
