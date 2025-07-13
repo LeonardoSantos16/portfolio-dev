@@ -27,7 +27,7 @@ const ProjectsSection = ({ data }: PropsCardData) => {
       </S.HeadProject>
       <S.CardsWrapper>
         {data &&
-          data.slice(0, 3).map((repository) => {
+          data.map((repository) => {
             return (
               <Card
                 id={repository.id}

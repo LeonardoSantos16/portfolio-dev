@@ -60,6 +60,7 @@ const AboutMe = () => {
             experiencesWork.map((experience) => {
               return (
                 <InfoWork
+                  key={experience.id}
                   title={experience.title}
                   date={experience.endDate}
                   mode={experience.mode}
@@ -73,6 +74,7 @@ const AboutMe = () => {
             experiencesEducation.map((experience) => {
               return (
                 <InfoWork
+                  key={experience.id}
                   title={experience.title}
                   date={experience.endDate}
                   mode={experience.mode}
@@ -96,9 +98,8 @@ const AboutMe = () => {
                 const IconComponent = iconMapping[icon.name_icon]
                 if (IconComponent) {
                   return (
-                    <S.StyleIcon>
+                    <S.StyleIcon key={index}>
                       <TechIcon
-                        key={index}
                         Icon={IconComponent}
                         color="#F5DE19"
                         size={48}

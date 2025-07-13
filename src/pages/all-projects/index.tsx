@@ -53,6 +53,7 @@ const Projects = () => {
           data.map((repository) => {
             return (
               <CardProject
+                key={repository.id}
                 title={repository.title}
                 description={repository.shortDescription}
                 image={devImage}

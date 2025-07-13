@@ -6,6 +6,7 @@ import { api } from '../../hooks/api'
 import { useCallback, useEffect, useState } from 'react'
 import { PropsIcon } from '../../pages/project'
 import { useNavigate } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
 interface CardProps {
   title: string
   description: string
@@ -32,7 +33,6 @@ const Card = ({ title, description, date, image, id }: CardProps) => {
   useEffect(() => {
     fetchIcons()
   }, [fetchIcons])
-
   return (
     <S.Container onClick={handleClick}>
       <img src={image} alt="image card" />
@@ -58,7 +58,9 @@ const Card = ({ title, description, date, image, id }: CardProps) => {
       </S.InfoProject>
 
       <h3>{title}</h3>
-      <S.ProjectDescription>{description}</S.ProjectDescription>
+      <S.ProjectDescription>
+        <ReactMarkdown>{description}</ReactMarkdown>
+      </S.ProjectDescription>
     </S.Container>
   )
 }

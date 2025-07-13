@@ -15,6 +15,7 @@ export const Container = styled.div`
   ${media.greaterThan('tablet')`
     flex-direction: row;
     padding: 0;
+    padding-right: 1rem;
   `}
   > main {
     display: flex;
@@ -40,8 +41,8 @@ export const InfoProfile = styled.p`
 
 export const WrapperIcon = styled.div`
   display: grid;
-  grid-template-columns: 100px 100px 100px;
-  row-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  gap: 1.5rem;
 `
 
 export const StyleIcon = styled.div`

@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 import { iconMapping } from '../../utils'
 import { PropsData } from '../../types/api-interface'
+import ReactMarkdown from 'react-markdown'
 export interface PropsIcon {
   name_icon: string
 }
@@ -67,7 +68,9 @@ const Project = () => {
             </S.TechContainer>
           </S.InfoProject>
           <h1>{data?.title}</h1>
-          <p>{data?.description}</p>
+          <p>
+            <ReactMarkdown>{data?.description}</ReactMarkdown>
+          </p>
         </S.ContentWrapper>
       </S.MainProject>
       <S.Aside>

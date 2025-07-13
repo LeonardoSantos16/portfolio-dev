@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get('/repository')
+        const response = await api.get('/repository/highlighted')
         setData(response.data)
       } catch (error) {
         console.error(error)
