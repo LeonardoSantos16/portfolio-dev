@@ -1,34 +1,35 @@
-import { useEffect, useState } from "react";
-import About from "../../components/about-section";
-import Contact from "../../components/contact";
-import Headline from "../../components/headline";
-import ProjectsSection from "../../components/project-section";
-import { api } from "../../hooks/api";
-import { Container } from "./styles";
+import { useEffect, useState } from 'react'
+import About from '../../components/about-section'
+import Contact from '../../components/contact'
+import Headline from '../../components/headline'
+import ProjectsSection from '../../components/project-section'
+import { api } from '../../hooks/api'
+import { Container } from './styles'
 export interface PropsData {
-  id: number;
-  title: string;
-  date: string;
-  description: string;
-  link_demo: string;
-  link_github: string;
+  id: number
+  title: string
+  date: string
+  description: string
+  linkDemo: string
+  shortDescription: string
+  linkGithub: string
 }
 
 const Home = () => {
-  const [data, setData] = useState<PropsData[] | null>(null);
+  const [data, setData] = useState<PropsData[] | null>(null)
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get("/repository");
-        setData(response.data);
+        const response = await api.get('/repository')
+        setData(response.data)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-    };
-    fetchData();
-  }, []);
+    }
+    fetchData()
+  }, [])
 
-  console.log(data);
+  console.log(data)
   return (
     <Container>
       <Headline />
@@ -36,7 +37,7 @@ const Home = () => {
       <ProjectsSection data={data} />
       <Contact />
     </Container>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

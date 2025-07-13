@@ -1,20 +1,21 @@
-import Card from "../card";
-import Devlinks from "../../assets/Project cover/DevLinks.png";
-import Button from "../button";
-import { ArrowRight } from "@phosphor-icons/react";
-import * as S from "./styles";
+import Card from '../card'
+import Devlinks from '../../assets/Project cover/DevLinks.png'
+import Button from '../button'
+import { ArrowRight } from '@phosphor-icons/react'
+import * as S from './styles'
 
 interface Data {
-  id: number;
-  title: string;
-  date: string;
-  description: string;
-  link_demo: string;
-  link_github: string;
+  id: number
+  title: string
+  date: string
+  description: string
+  linkDemo: string
+  shortDescription: string
+  linkGithub: string
 }
 
 interface PropsCardData {
-  data: Data[] | null;
+  data: Data[] | null
 }
 
 const ProjectsSection = ({ data }: PropsCardData) => {
@@ -26,17 +27,17 @@ const ProjectsSection = ({ data }: PropsCardData) => {
       </S.HeadProject>
       <S.CardsWrapper>
         {data &&
-          data.map((repository) => {
+          data.slice(0, 3).map((repository) => {
             return (
               <Card
                 id={repository.id}
                 key={repository.id}
                 title={repository.title}
                 date={repository.date}
-                description={repository.description}
+                description={repository.shortDescription}
                 image={Devlinks}
               />
-            );
+            )
           })}
       </S.CardsWrapper>
       <Button
@@ -46,9 +47,10 @@ const ProjectsSection = ({ data }: PropsCardData) => {
         backgroundHoverColor="#4E4563"
         backgroundColor="#413A4F"
         width="128px"
+        href="/projects"
       />
     </S.Container>
-  );
-};
+  )
+}
 
-export default ProjectsSection;
+export default ProjectsSection
