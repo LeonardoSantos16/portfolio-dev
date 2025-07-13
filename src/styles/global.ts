@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const StyleGlobal = createGlobalStyle`
     *{
@@ -12,9 +12,7 @@ export const StyleGlobal = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         min-width: 350px;
         background-color: ${({ theme }) => theme.COLORS.surfaceBackground};
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  
     }
 
     span{
@@ -37,4 +35,4 @@ export const StyleGlobal = createGlobalStyle`
         color: ${({ theme }) => theme.COLORS.textPrimary};
     }
 
-`;
+`

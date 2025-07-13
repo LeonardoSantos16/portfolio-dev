@@ -32,6 +32,7 @@ const Projects = () => {
     fetchRepositoriesFilteredCategory()
   }, [activeCategory])
 
+  //TODO: adicionar skeleton e debounce
   return (
     <S.Container>
       <h1>Projetos</h1>

@@ -2,12 +2,11 @@ import styled from 'styled-components'
 import media from '../../styles/media-query'
 
 export const Container = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  max-width: 103.75rem;
+  max-width: 76rem;
   margin: 32px auto;
   justify-content: center;
   min-height: 100vh;
@@ -25,23 +24,24 @@ export const Container = styled.div`
 
 export const ButtonBack = styled.a`
   position: absolute;
-  padding: 12px;
-  width: 48px;
-  height: 48px;
-  left: 16px;
-  top: 24px;
+  padding: 0.75rem;
+  width: 3rem;
+  height: 3rem;
+  left: 1rem;
+  top: 1rem;
   background: #171023;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+  box-shadow: 0rem 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem;
   cursor: pointer;
   ${media.greaterThan('tablet')`
-        left: 24px;
-        top: 24px;
+        left: 1.5rem;
+        top: 1.5rem;
     `}
 `
 
 export const MainProject = styled.main`
-  border-radius: 16px;
+  position: relative;
+
   width: 100;
   background-color: ${({ theme }) => theme.COLORS.surfacePrimary};
   max-width: 50rem;
@@ -49,6 +49,9 @@ export const MainProject = styled.main`
     ${({ theme }) => theme.fonts.heeboBigger};
     color: ${({ theme }) => theme.COLORS.textPrimary};
   }
+  ${media.greaterThan('tablet')`
+    border-radius: 16px;
+  `}
 `
 
 export const ContentWrapper = styled.div`

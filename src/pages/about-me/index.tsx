@@ -82,6 +82,9 @@ const AboutMe = () => {
             })}
         </Section>
       </main>
+      {
+        //TODO: Adiconar cor ao icone
+      }
       <aside>
         <Section title="Tech Stack">
           <S.WrapperIcon>
