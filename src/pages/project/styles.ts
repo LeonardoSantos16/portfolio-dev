@@ -59,7 +59,10 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   padding: 24px;
-
+  > div {
+    ${({ theme }) => theme.fonts.heeboSmall};
+    color: ${({ theme }) => theme.COLORS.textSecondary};
+  }
   ${media.greaterThan('mobile')`
         padding: 32px 48px;
     `}

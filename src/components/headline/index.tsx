@@ -1,7 +1,7 @@
-import { ArrowRight, ReadCvLogo } from "@phosphor-icons/react";
-import Button from "../button";
-import * as S from "./styles";
-import linha from "../../assets/Linha.svg";
+import { ArrowRight, ReadCvLogo } from '@phosphor-icons/react'
+import Button from '../button'
+import * as S from './styles'
+import linha from '../../assets/Linha.svg'
 
 const Headline = () => {
   return (
@@ -18,7 +18,7 @@ const Headline = () => {
         <S.CTAButtons>
           <Button
             Icon={ReadCvLogo}
-            orderIcon="row"
+            orderIcon="row-reverse"
             text="My resume"
             backgroundHoverColor="#4E4563"
             backgroundColor="#413A4F"
@@ -26,7 +26,7 @@ const Headline = () => {
           />
           <Button
             Icon={ArrowRight}
-            orderIcon="row-reverse"
+            orderIcon="row"
             text="Get in touch"
             backgroundHoverColor="#9955E8"
             backgroundColor="#8A42DB"
@@ -35,7 +35,7 @@ const Headline = () => {
         </S.CTAButtons>
       </S.ContentHead>
     </S.Container>
-  );
-};
+  )
+}
 
-export default Headline;
+export default Headline

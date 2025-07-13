@@ -9,6 +9,7 @@ interface ButtonStyleProps {
   $orderIcon: Direction
   $backgroundHoverColor: string
   $height?: string
+  $justify?: boolean
 }
 
 const buttonStyles = css<ButtonStyleProps>`
@@ -18,7 +19,7 @@ const buttonStyles = css<ButtonStyleProps>`
   color: ${({ theme }) => theme.COLORS.textPrimary};
   border-radius: 8px;
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ $justify }) => ($justify ? 'space-around' : 'center')};
   cursor: pointer;
   flex-direction: ${({ $orderIcon }) => $orderIcon || 'row'};
   background: ${({ $backgroundColor, theme }) =>

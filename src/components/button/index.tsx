@@ -12,6 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   height?: string
   orderIcon: Direction
   href?: string
+  IconBegin?: React.ComponentType<IconProps>
 }
 
 const Button = ({
@@ -22,9 +23,13 @@ const Button = ({
   height,
   orderIcon,
   backgroundHoverColor,
+  IconBegin,
   href,
   ...rest
 }: ButtonProps) => {
+  console.log('🚀 ~ href:', href)
+  console.log('🚀 ~ IconBegin:', !IconBegin)
+
   if (href) {
     return (
       <S.ButtonLink
@@ -34,9 +39,12 @@ const Button = ({
         $backgroundHoverColor={backgroundHoverColor}
         $width={width}
         $orderIcon={orderIcon}
+        $justify={!!IconBegin}
       >
-        <Icon size={24} />
+        {IconBegin && <IconBegin size={24} />}
+
         <S.Text>{text}</S.Text>
+        <Icon size={24} />
       </S.ButtonLink>
     )
   }
@@ -49,9 +57,12 @@ const Button = ({
       $backgroundHoverColor={backgroundHoverColor}
       $width={width}
       $orderIcon={orderIcon}
+      $justify={!!IconBegin}
     >
-      <Icon size={24} />
+      {IconBegin && <IconBegin size={24} />}
+
       <S.Text>{text}</S.Text>
+      <Icon size={24} />
     </S.Button>
   )
 }

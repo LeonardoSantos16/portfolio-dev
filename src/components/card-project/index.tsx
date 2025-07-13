@@ -1,23 +1,23 @@
-import { Link as LinkIcon, GithubLogo } from "@phosphor-icons/react";
-import * as S from "./styles";
-import { useNavigate } from "react-router-dom";
-import Button from "../button";
+import { Link as LinkIcon, GithubLogo } from '@phosphor-icons/react'
+import * as S from './styles'
+import { useNavigate } from 'react-router-dom'
+import Button from '../button'
 
 interface CardProps {
-  title: string;
-  description: string;
-  image: string;
-  id: number;
-  linkGithub?: string;
-  linkDemo?: string;
+  title: string
+  description: string
+  image: string
+  id: number
+  linkGithub?: string
+  linkDemo?: string
 }
 
 const CardProject = (props: CardProps) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/project/${props.id}`);
-  };
+    navigate(`/project/${props.id}`)
+  }
 
   return (
     <S.Container onClick={handleClick}>
@@ -36,7 +36,7 @@ const CardProject = (props: CardProps) => {
               backgroundColor="#8A42DB"
               width="148px"
               height="42px"
-              orderIcon={"row"}
+              orderIcon="row-reverse"
             />
           )}
           {props.linkGithub && (
@@ -47,13 +47,13 @@ const CardProject = (props: CardProps) => {
               backgroundColor="#5ecea0"
               width="128px"
               height="42px"
-              orderIcon={"row"}
+              orderIcon="row-reverse"
             />
           )}
         </S.ContentLink>
       </S.ContentText>
     </S.Container>
-  );
-};
+  )
+}
 
-export default CardProject;
+export default CardProject

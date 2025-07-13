@@ -42,7 +42,7 @@ const ProjectsSection = ({ data }: PropsCardData) => {
       </S.CardsWrapper>
       <Button
         Icon={ArrowRight}
-        orderIcon="row-reverse"
+        orderIcon="row"
         text="See all"
         backgroundHoverColor="#4E4563"
         backgroundColor="#413A4F"

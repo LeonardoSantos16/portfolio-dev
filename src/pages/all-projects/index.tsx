@@ -66,7 +66,7 @@ const Projects = () => {
       <S.WrapperButton>
         <Button
           Icon={ArrowDown}
-          orderIcon="row-reverse"
+          orderIcon="row"
           text="Carregar mais"
           backgroundHoverColor="#4E4563"
           backgroundColor="#413A4F"

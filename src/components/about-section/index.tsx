@@ -1,9 +1,9 @@
-import { ReadCvLogo } from "@phosphor-icons/react";
-import Button from "../button";
-import TechIcon from "../tech-icon";
-import { IoLogoJavascript, IoLogoNodejs, IoLogoReact } from "react-icons/io5";
-import * as S from "./styles";
-import codingImage from "../../assets/coding-bro.png";
+import { ReadCvLogo } from '@phosphor-icons/react'
+import Button from '../button'
+import TechIcon from '../tech-icon'
+import { IoLogoJavascript, IoLogoNodejs, IoLogoReact } from 'react-icons/io5'
+import * as S from './styles'
+import codingImage from '../../assets/coding-bro.png'
 const About = () => {
   return (
     <S.Container>
@@ -31,7 +31,7 @@ const About = () => {
           </S.ContentText>
           <Button
             Icon={ReadCvLogo}
-            orderIcon="row"
+            orderIcon="row-reverse"
             text="My resume"
             backgroundHoverColor="#9955E8"
             backgroundColor="#8A42DB"
@@ -40,7 +40,7 @@ const About = () => {
         </S.ContentWrapper>
       </S.SectionAbout>
     </S.Container>
-  );
-};
+  )
+}
 
-export default About;
+export default About

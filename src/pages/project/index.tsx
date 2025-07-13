@@ -10,6 +10,7 @@ import { format } from 'date-fns'
 import { iconMapping } from '../../utils'
 import { PropsData } from '../../types/api-interface'
 import ReactMarkdown from 'react-markdown'
+import { IoLogoGithub, IoGlobe } from 'react-icons/io5'
 export interface PropsIcon {
   name_icon: string
 }
@@ -68,9 +69,9 @@ const Project = () => {
             </S.TechContainer>
           </S.InfoProject>
           <h1>{data?.title}</h1>
-          <p>
+          <div>
             <ReactMarkdown>{data?.description}</ReactMarkdown>
-          </p>
+          </div>
         </S.ContentWrapper>
       </S.MainProject>
       <S.Aside>
@@ -78,22 +79,26 @@ const Project = () => {
         <a href={data?.linkDemo} target="_blank">
           <Button
             Icon={ArrowUpRight}
-            orderIcon="row-reverse"
+            IconBegin={IoGlobe}
+            orderIcon="row"
             text="Live demo"
             backgroundHoverColor="#9955E8"
             backgroundColor="#8A42DB"
             width="312px"
-          />{' '}
+            href={data?.linkDemo}
+          />
         </a>
         <a href={data?.linkGithub} target="_blank">
           <Button
             Icon={ArrowUpRight}
-            orderIcon="row-reverse"
+            IconBegin={IoLogoGithub}
+            orderIcon="row"
             text="Code"
             backgroundHoverColor="#4E4563"
             backgroundColor="#413A4F"
             width="312px"
-          />{' '}
+            href={data?.linkGithub}
+          />
         </a>
       </S.Aside>
     </S.Container>
