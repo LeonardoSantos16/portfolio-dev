@@ -32,6 +32,11 @@ export interface PropsData {
   category: ProjectCategory
 }
 
+export interface PropsResponseRepositories {
+  repository: PropsData[]
+  totalItems: number
+}
+
 export interface PropsExperience {
   id: number
   title: string

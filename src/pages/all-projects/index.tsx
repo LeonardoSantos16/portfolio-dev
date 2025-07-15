@@ -6,31 +6,65 @@ import { useEffect, useState } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
 import Button from '../../components/button'
 import { api } from '../../hooks/api'
-import { ProjectCategory, PropsData } from '../../types/api-interface'
+import {
+  ProjectCategory,
+  PropsData,
+  PropsResponseRepositories,
+} from '../../types/api-interface'
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>(
     ProjectCategory.ALL
   )
-  const [data, setData] = useState<PropsData[] | null>(null)
-
-  const handleTagClick = (categoryTitle: string) => {
-    setActiveCategory(categoryTitle as ProjectCategory)
-  }
+  const [data, setData] = useState<PropsData[]>([])
+  const [page, setPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
+  const ITEMS_PER_PAGE = 6
 
   useEffect(() => {
-    const fetchRepositoriesFilteredCategory = async () => {
+    let isActive = true
+
+    const fetchRepositories = async () => {
       try {
-        const response = await api.get<PropsData[]>(
-          `/repository?category=${activeCategory}`
+        const response = await api.get<PropsResponseRepositories>(
+          `/repository?category=${activeCategory}&page=${page}&limit=${ITEMS_PER_PAGE}`
         )
-        setData(response.data)
+
+        const newItems = response.data.repository
+        const totalItems = response.data.totalItems
+
+        if (isActive) {
+          setData((prevData) => [...prevData, ...newItems])
+
+          setData((currentData) => {
+            if (currentData.length >= totalItems) {
+              setHasMore(false)
+            }
+            return currentData
+          })
+        }
       } catch (error) {
-        console.error(error)
+        if (isActive) {
+          console.error(error)
+        }
       }
     }
-    fetchRepositoriesFilteredCategory()
-  }, [activeCategory])
+    fetchRepositories()
+    return () => {
+      isActive = false
+    }
+  }, [activeCategory, page])
+  const handleTagClick = (category: ProjectCategory) => {
+    if (category === activeCategory) return
+
+    setActiveCategory(category)
+    setData([])
+    setPage(1)
+    setHasMore(true)
+  }
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1)
+  }
 
   //TODO: adicionar skeleton e debounce
   return (
@@ -44,7 +78,7 @@ const Projects = () => {
             key={category}
             title={category}
             isActive={activeCategory === category}
-            onClick={handleTagClick}
+            onClick={() => handleTagClick(category)}
           />
         ))}
       </S.Tags>
@@ -63,16 +97,19 @@ const Projects = () => {
           })}
       </S.WrapperCard>
 
-      <S.WrapperButton>
-        <Button
-          Icon={ArrowDown}
-          orderIcon="row"
-          text="Carregar mais"
-          backgroundHoverColor="#4E4563"
-          backgroundColor="#413A4F"
-          width="172px"
-        />
-      </S.WrapperButton>
+      {hasMore && (
+        <S.WrapperButton>
+          <Button
+            Icon={ArrowDown}
+            orderIcon="row"
+            text="Carregar mais"
+            backgroundHoverColor="#4E4563"
+            backgroundColor="#413A4F"
+            width="172px"
+            onClick={handleLoadMore}
+          />
+        </S.WrapperButton>
+      )}
     </S.Container>
   )
 }
