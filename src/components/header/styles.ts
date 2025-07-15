@@ -7,8 +7,8 @@ export const Container = styled.div`
   top: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-width: 350px;
-  max-width: 76rem;
   margin: 0 auto;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
 `
@@ -18,6 +18,7 @@ export const Content = styled.div`
   align-items: center;
   padding: 16px;
   width: 100%;
+  max-width: 76rem;
 `
 
 export const Logo = styled.h4`

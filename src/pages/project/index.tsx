@@ -13,6 +13,8 @@ import ReactMarkdown from 'react-markdown'
 import { IoLogoGithub, IoGlobe } from 'react-icons/io5'
 export interface PropsIcon {
   name_icon: string
+  name: string
+  color: string
 }
 const Project = () => {
   const navigate = useNavigate()
@@ -59,7 +61,7 @@ const Project = () => {
                       <TechIcon
                         key={index}
                         Icon={IconComponent}
-                        color="#9955E8"
+                        color={icon.color}
                         size={24}
                       />
                     )

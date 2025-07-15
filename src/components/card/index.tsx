@@ -47,7 +47,7 @@ const Card = ({ title, description, date, image, id }: CardProps) => {
                   <TechIcon
                     key={index}
                     Icon={IconComponent}
-                    color="#9955E8"
+                    color={icon.color}
                     size={24}
                   />
                 )

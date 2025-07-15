@@ -2,6 +2,9 @@ import { Link as LinkIcon, GithubLogo } from '@phosphor-icons/react'
 import * as S from './styles'
 import { useNavigate } from 'react-router-dom'
 import Button from '../button'
+import { useCallback, useEffect, useState } from 'react'
+import { api } from '../../hooks/api'
+import { PropsIcon } from '../../pages/project'
 
 interface CardProps {
   title: string
@@ -14,10 +17,24 @@ interface CardProps {
 
 const CardProject = (props: CardProps) => {
   const navigate = useNavigate()
-
+  const [icons, setIcons] = useState<PropsIcon[]>([])
+  console.log('🚀 ~ CardProject ~ icons:', icons)
   const handleClick = () => {
     navigate(`/project/${props.id}`)
   }
+
+  const fetchIcons = useCallback(async () => {
+    try {
+      const responseIcons = await api.get(`/iconRepository/${props.id}`)
+      setIcons(responseIcons.data.getIcon)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [props.id])
+
+  useEffect(() => {
+    fetchIcons()
+  }, [fetchIcons])
 
   return (
     <S.Container onClick={handleClick}>
@@ -25,8 +42,18 @@ const CardProject = (props: CardProps) => {
       <S.ContentText>
         <h1>{props.title}</h1>
         <p>{props.description}</p>
-        <span>HTML , JavaScript, SASS, React</span>
-
+        <div>
+          {icons &&
+            Array.isArray(icons) &&
+            icons.map((icon, index) => {
+              return (
+                <S.TextTag key={index}>
+                  {icon.name}
+                  {index < icons.length - 1 ? ', ' : ''}
+                </S.TextTag>
+              )
+            })}
+        </div>
         <S.ContentLink>
           {props.linkDemo && (
             <Button

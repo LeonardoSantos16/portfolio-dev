@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import { Link } from "react-router-dom";
+import { styled } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.button`
   box-sizing: border-box;
@@ -17,14 +17,14 @@ export const Container = styled.button`
     border: 1.5px solid #7dffaf;
     box-shadow: 0px 0px 48px rgba(125, 255, 175, 0.24);
   }
-`;
+`
 
 export const Image = styled.img`
   max-width: 23.4375rem;
   width: 100%;
   height: 260px;
   border-radius: 20px;
-`;
+`
 
 export const ContentText = styled.div`
   display: flex;
@@ -47,7 +47,8 @@ export const ContentText = styled.div`
     text-align: start;
   }
 
-  > span {
+  > div {
+    display: flex;
     background-image: ${({ theme }) => theme.COLORS.gradientHeading};
     -webkit-background-clip: text;
     background-clip: text;
@@ -55,7 +56,11 @@ export const ContentText = styled.div`
     color: transparent;
     ${({ theme }) => theme.fonts.heeboSmall};
   }
-`;
+`
+
+export const TextTag = styled.p`
+  margin-right: 0.25rem;
+`
 
 export const ContentLink = styled.div`
   display: flex;
@@ -63,16 +68,16 @@ export const ContentLink = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 0.5rem;
-`;
+`
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.625rem;
-`;
+`
 
 export const StyledLink = styled(Link)`
   text-decoration: underline;
   ${({ theme }) => theme.fonts.heeboSmall};
   color: ${({ theme }) => theme.COLORS.textPrimary};
-`;
+`
