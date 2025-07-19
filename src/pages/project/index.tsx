@@ -11,6 +11,7 @@ import { iconMapping } from '../../utils'
 import { PropsData } from '../../types/api-interface'
 import ReactMarkdown from 'react-markdown'
 import { IoLogoGithub, IoGlobe } from 'react-icons/io5'
+import { ptBR } from 'date-fns/locale'
 export interface PropsIcon {
   name_icon: string
   name: string
@@ -46,11 +47,11 @@ const Project = () => {
         <S.ButtonBack onClick={handleBackButton}>
           <ArrowLeft size={24} color="#ffffff" />
         </S.ButtonBack>
-        <img src={feedbackWidget} alt="image project" />
+        <img src={data?.imageUrl || feedbackWidget} alt="image project" />
         <S.ContentWrapper>
           <S.InfoProject>
             <S.DateProject>
-              {data && format(data.date, 'MMMM dd, yyyy')}
+              {data && format(data.date, 'MMMM dd, yyyy', { locale: ptBR })}
             </S.DateProject>
             <S.TechContainer>
               {icons &&

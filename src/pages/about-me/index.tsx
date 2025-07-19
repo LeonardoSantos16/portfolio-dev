@@ -62,7 +62,8 @@ const AboutMe = () => {
                 <InfoWork
                   key={experience.id}
                   title={experience.title}
-                  date={experience.endDate}
+                  dateEnd={experience.endDate}
+                  dateBegin={experience.startDate}
                   mode={experience.mode}
                   companyName={experience.organization}
                 />
@@ -76,7 +77,8 @@ const AboutMe = () => {
                 <InfoWork
                   key={experience.id}
                   title={experience.title}
-                  date={experience.endDate}
+                  dateEnd={experience.endDate}
+                  dateBegin={experience.startDate}
                   mode={experience.mode}
                   companyName={experience.organization}
                 />

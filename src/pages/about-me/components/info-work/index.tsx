@@ -1,8 +1,11 @@
 import { FaRegBuilding, FaSearchLocation } from 'react-icons/fa'
 import * as S from './styles'
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 interface InfoWorkProps {
   title: string
-  date: string
+  dateEnd: string
+  dateBegin: string
   mode: string
   companyName: string
   location?: string
@@ -39,7 +42,15 @@ const InfoWork = (props: InfoWorkProps) => {
             </S.Wrapper>
           )}
         </S.Content>
-        <S.TextStyle>{props.date}</S.TextStyle>
+        <S.DateWrapper>
+          <S.TextStyle>
+            {format(props.dateBegin, 'MMMM yyyy', { locale: ptBR })}
+          </S.TextStyle>
+          <S.TextStyle>-</S.TextStyle>
+          <S.TextStyle>
+            {format(props.dateEnd, 'MMMM yyyy', { locale: ptBR })}
+          </S.TextStyle>
+        </S.DateWrapper>
       </S.BottomStyle>
     </S.Info>
   )

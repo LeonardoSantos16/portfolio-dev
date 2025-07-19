@@ -30,6 +30,7 @@ export interface PropsData {
   linkGithub: string
   highlighted?: boolean
   category: ProjectCategory
+  imageUrl?: string
 }
 
 export interface PropsResponseRepositories {

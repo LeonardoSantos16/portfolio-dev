@@ -3,7 +3,6 @@ import Devlinks from '../../assets/Project cover/DevLinks.png'
 import Button from '../button'
 import { ArrowRight } from '@phosphor-icons/react'
 import * as S from './styles'
-
 interface Data {
   id: number
   title: string
@@ -12,6 +11,7 @@ interface Data {
   linkDemo: string
   shortDescription: string
   linkGithub: string
+  imageUrl?: string
 }
 
 interface PropsCardData {
@@ -35,7 +35,7 @@ const ProjectsSection = ({ data }: PropsCardData) => {
                 title={repository.title}
                 date={repository.date}
                 description={repository.shortDescription}
-                image={Devlinks}
+                image={repository.imageUrl || Devlinks}
               />
             )
           })}

@@ -7,6 +7,8 @@ import { useCallback, useEffect, useState } from 'react'
 import { PropsIcon } from '../../pages/project'
 import { useNavigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
+import { ptBR } from 'date-fns/locale'
+
 interface CardProps {
   title: string
   description: string
@@ -37,7 +39,9 @@ const Card = ({ title, description, date, image, id }: CardProps) => {
     <S.Container onClick={handleClick}>
       <img src={image} alt="image card" />
       <S.InfoProject>
-        <S.DateProject>{format(date, 'MMMM dd, yyyy')}</S.DateProject>
+        <S.DateProject>
+          {format(date, 'MMMM dd, yyyy', { locale: ptBR })}
+        </S.DateProject>
         <S.TechContainer>
           {icons &&
             icons.map((icon, index) => {

@@ -90,7 +90,7 @@ const Projects = () => {
                 key={repository.id}
                 title={repository.title}
                 description={repository.shortDescription}
-                image={devImage}
+                image={repository.imageUrl || devImage}
                 id={repository.id}
               />
             )
