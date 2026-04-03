@@ -17,12 +17,14 @@ export const Container = styled.div`
     padding: 0;
     padding-right: 1rem;
   `}
+
   > main {
     display: flex;
     flex-direction: column;
     gap: 2.375rem;
     width: 100%;
     max-width: 44.25rem;
+    flex: 1;
     ${media.greaterThan('tablet')`
       padding: 0 0 0 16px;
     `}
@@ -31,6 +33,9 @@ export const Container = styled.div`
   > aside {
     max-width: 300px;
     width: 100%;
+    ${media.lessThan('tablet')`
+       max-width: 100%;
+    `}
   }
 `
 
@@ -41,7 +46,7 @@ export const InfoProfile = styled.p`
 
 export const WrapperIcon = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   gap: 1.5rem;
 `
 
