@@ -1,72 +1,60 @@
+import { useInfiniteQuery } from '@tanstack/react-query'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import CardProject from '../../components/card-project'
 import * as S from './styles'
 import devImage from '../../assets/Project cover/DevLinks.png'
 import Tag from './components/tag'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ArrowDown } from '@phosphor-icons/react'
 import Button from '../../components/button'
 import { api } from '../../hooks/api'
 import {
   ProjectCategory,
-  PropsData,
   PropsResponseRepositories,
 } from '../../types/api-interface'
+
+const ITEMS_PER_PAGE = 6
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>(
     ProjectCategory.ALL
   )
-  const [data, setData] = useState<PropsData[]>([])
-  const [page, setPage] = useState(1)
-  const [hasMore, setHasMore] = useState(true)
-  const ITEMS_PER_PAGE = 6
 
-  useEffect(() => {
-    let isActive = true
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isFetching
+  } = useInfiniteQuery<PropsResponseRepositories>({
+    queryKey: ['projects', activeCategory],
+    queryFn: async ({ pageParam }) => {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+      
+      const response = await api.get(
+        `/repository?category=${activeCategory}&page=${pageParam}&limit=${ITEMS_PER_PAGE}`
+      )
+      return response.data
+    },
+    getNextPageParam: (lastPage, allPages) => {
+      const loadedItems = allPages.length * ITEMS_PER_PAGE
+      return loadedItems < lastPage.totalItems ? allPages.length + 1 : undefined
+    },
+    initialPageParam: 1,
+  })
 
-    const fetchRepositories = async () => {
-      try {
-        const response = await api.get<PropsResponseRepositories>(
-          `/repository?category=${activeCategory}&page=${page}&limit=${ITEMS_PER_PAGE}`
-        )
+  const repositories = data?.pages.flatMap((page) => page.repository) ?? []
 
-        const newItems = response.data.repository
-        const totalItems = response.data.totalItems
-
-        if (isActive) {
-          setData((prevData) => [...prevData, ...newItems])
-
-          setData((currentData) => {
-            if (currentData.length >= totalItems) {
-              setHasMore(false)
-            }
-            return currentData
-          })
-        }
-      } catch (error) {
-        if (isActive) {
-          console.error(error)
-        }
-      }
-    }
-    fetchRepositories()
-    return () => {
-      isActive = false
-    }
-  }, [activeCategory, page])
   const handleTagClick = (category: ProjectCategory) => {
     if (category === activeCategory) return
-
     setActiveCategory(category)
-    setData([])
-    setPage(1)
-    setHasMore(true)
-  }
-  const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1)
   }
 
-  //TODO: adicionar skeleton e debounce
+  const showSkeleton = isLoading || (isFetching && repositories.length === 0)
+
   return (
     <S.Container>
       <h1>Projetos</h1>
@@ -82,10 +70,19 @@ const Projects = () => {
           />
         ))}
       </S.Tags>
-      <S.WrapperCard>
-        {data &&
-          data.map((repository) => {
-            return (
+
+      <SkeletonTheme baseColor="#202024" highlightColor="#2d2d30">
+        <S.WrapperCard>
+          {showSkeleton ? (
+            Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+              <S.SkeletonCardWrapper key={index}>
+                <Skeleton height={200} borderRadius={8} />
+                <Skeleton height={24} width="80%" style={{ marginTop: 12 }} />
+                <Skeleton height={16} width="100%" count={2} />
+              </S.SkeletonCardWrapper>
+            ))
+          ) : (
+            repositories.map((repository) => (
               <CardProject
                 key={repository.id}
                 title={repository.title}
@@ -93,20 +90,22 @@ const Projects = () => {
                 image={repository.imageUrl || devImage}
                 id={repository.id}
               />
-            )
-          })}
-      </S.WrapperCard>
+            ))
+          )}
+        </S.WrapperCard>
+      </SkeletonTheme>
 
-      {hasMore && (
+      {hasNextPage && !showSkeleton && (
         <S.WrapperButton>
           <Button
             Icon={ArrowDown}
             orderIcon="row"
-            text="Carregar mais"
+            text={isFetchingNextPage ? "Carregando..." : "Carregar mais"}
             backgroundHoverColor="#4E4563"
             backgroundColor="#413A4F"
             width="172px"
-            onClick={handleLoadMore}
+            onClick={() => fetchNextPage()}
+            disabled={isFetchingNextPage}
           />
         </S.WrapperButton>
       )}

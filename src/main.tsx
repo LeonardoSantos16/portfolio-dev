@@ -8,10 +8,14 @@ import Header from './components/header'
 import Footer from './components/footer'
 import { AppRoutes } from './routes'
 import ScrollToTop from './components/ScrollTop.tsx'
-// Atualizar as rotas
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
       <StrictMode>
         <Header />
         <ScrollToTop />
@@ -19,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
 
         <Footer />
       </StrictMode>
+      </QueryClientProvider>
       <StyleGlobal />
     </ThemeProvider>
   </BrowserRouter>

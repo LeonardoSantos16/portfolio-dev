@@ -40,6 +40,13 @@ export const WrapperCard = styled.div`
     grid-template-columns: 1fr;
   }
 `
+export const SkeletonCardWrapper = styled.div`
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
 
 export const Tags = styled.div`
   display: flex;
