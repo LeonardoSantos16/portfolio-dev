@@ -42,7 +42,7 @@ export const ButtonBack = styled.a`
 export const MainProject = styled.main`
   position: relative;
 
-  width: 100;
+  width: 100%;
   background-color: ${({ theme }) => theme.COLORS.surfacePrimary};
   max-width: 50rem;
   h1 {
