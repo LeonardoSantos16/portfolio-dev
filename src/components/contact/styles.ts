@@ -80,3 +80,11 @@ export const Textarea = styled.textarea`
 `;
 
 export const ContactSection = styled.div``;
+
+export const Error = styled.span`
+  color: ${({ theme }) => theme.COLORS.errorColor};
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-weight: 500;
+`;

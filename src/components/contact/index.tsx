@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import emailjs from "emailjs-com";
 import Button from "../button";
 import Input from "./components/input";
@@ -6,28 +6,60 @@ import { ArrowRight } from "@phosphor-icons/react";
 import * as S from "./styles";
 import officeWork from "../../assets/Office work-bro.png";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
-const Contact = () => {
-  const form = useRef<HTMLFormElement>(null);
+import * as z from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (form.current) {
-      emailjs
-        .sendForm(
-          "service_syc2kl7",
-          "template_gla7cj9",
-          form.current,
-          "BN7D-gwERwiJLLuOU"
-        )
-        .then(() => {
-          alert("Mensagem enviada com sucesso!");
-          form.current!.reset();
-        })
-        .catch((error) => {
-          alert("Erro ao enviar a mensagem, tente novamente");
-          console.error(error.text);
-        });
-    }
+interface dataProps {
+  name: string;
+  email: string;
+  message: string;
+}
+
+const schema = z.object({
+  name: z
+    .string()
+    .min(1, "O nome é obrigatório"),
+  email: z
+    .string()
+    .min(1, "O e-mail é obrigatório")
+    .email("Insira um e-mail válido"),
+  message: z
+    .string()
+    .min(5, "A mensagem deve ter pelo menos 5 caracteres")
+    .max(500, "A mensagem deve ter no máximo 500 caracteres"),
+});
+
+const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<dataProps>({
+    resolver: zodResolver(schema)
+  });
+
+  const sendEmail = (data: dataProps) => {
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          user_name: data.name,
+          user_email: data.email,
+          message: data.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        alert("Mensagem enviada com sucesso!");
+        reset();
+      })
+      .catch((error) => {
+        alert("Erro ao enviar a mensagem, tente novamente");
+        console.error(error);
+      });
   };
 
   return (
@@ -38,7 +70,7 @@ const Contact = () => {
         <h2>Enjoyed my work? Let’s work together</h2>
         <p>
           I’m always up for a chat. Pop me an email at hi@linalevi.com or give
-          me a shout on social media.{" "}
+          me a shout on social media.
         </p>
         <S.Socials>
           <S.ButtonSocial
@@ -55,10 +87,26 @@ const Contact = () => {
           </S.ButtonSocial>
         </S.Socials>
       </S.Profile>
-      <S.Forms ref={form} onSubmit={sendEmail}>
-        <Input name="user_name" placeholder="Name" />
-        <Input name="user_email" placeholder="E-mail" />
-        <S.Textarea name="message" placeholder="Your message" />
+      
+      <S.Forms onSubmit={handleSubmit(sendEmail)}>
+        <Input 
+          {...register("name")} 
+          placeholder="Name" 
+          errors={errors.name?.message} 
+        />
+        
+        <Input 
+          {...register("email")} 
+          placeholder="E-mail" 
+          errors={errors.email?.message} 
+        />
+
+        <S.Textarea 
+          {...register("message")} 
+          placeholder="Your message" 
+        />
+        {errors.message && <S.Error>{errors.message.message}</S.Error>}
+
         <Button
           type="submit"
           Icon={ArrowRight}

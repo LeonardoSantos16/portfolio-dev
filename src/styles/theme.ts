@@ -15,6 +15,7 @@ export const theme = {
     textPrimary: "#F5F6F6",
     textSecondary: "#CDD0D4",
     white: "#ffffff",
+    errorColor: "#F75A68",
   },
   fonts,
   breakpoints,

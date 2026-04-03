@@ -1,4 +1,4 @@
-import { SunDim } from '@phosphor-icons/react'
+//import { SunDim } from '@phosphor-icons/react'
 import * as S from './styles'
 
 // TODO: Configurar os ButtonsActions
@@ -12,14 +12,14 @@ const Menu = () => {
       <S.MenuItems to="/about-me">About</S.MenuItems>
       <S.MenuItems to="/projects">Projects</S.MenuItems>
       <S.Line />
-      <S.Actions>
+      {/* <S.Actions>
         <S.ButtonAction>
           <SunDim size={24} />
         </S.ButtonAction>
         <S.ButtonAction>
           <SunDim size={24} />
         </S.ButtonAction>
-      </S.Actions>
+      </S.Actions> */}
     </>
   )
 }
