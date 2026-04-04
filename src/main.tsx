@@ -9,6 +9,7 @@ import Footer from './components/footer'
 import { AppRoutes } from './routes'
 import ScrollToTop from './components/ScrollTop.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'sonner'
 
 const queryClient = new QueryClient()
 
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
         <AppRoutes />
 
         <Footer />
+        <Toaster richColors closeButton position="bottom-right" theme="dark" />
       </StrictMode>
       </QueryClientProvider>
       <StyleGlobal />

@@ -94,11 +94,16 @@ export const Aside = styled.aside`
   max-width: 24rem;
   height: 14.5rem;
   align-self: center;
+
+  > h3 {
+    align-self: center;
+  }
+  
   ${media.greaterThan('tablet')`
         height: 15.5rem;
         align-self: auto;
     `}
-
+  
   >a {
     text-decoration: none;
   }

@@ -9,8 +9,8 @@ const Menu = () => {
       <S.MenuItems to="/" end>
         Home
       </S.MenuItems>
-      <S.MenuItems to="/about-me">About</S.MenuItems>
-      <S.MenuItems to="/projects">Projects</S.MenuItems>
+      <S.MenuItems to="/about-me">Sobre</S.MenuItems>
+      <S.MenuItems to="/projects">Projetos</S.MenuItems>
       <S.Line />
       {/* <S.Actions>
         <S.ButtonAction>

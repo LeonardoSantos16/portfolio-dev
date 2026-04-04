@@ -39,10 +39,32 @@ export const Container = styled.div`
   }
 `
 
-export const InfoProfile = styled.p`
-  ${({ theme }) => theme.fonts.heeboMedium};
+export const InfoProfile = styled.div`
+  ${({ theme }) => theme.fonts.heeboBig};
   color: ${({ theme }) => theme.COLORS.textSecondary};
-`
+  text-align: justify;
+  line-height: 1.6;
+
+  p {
+    ${({ theme }) => theme.fonts.heeboMedium};
+    margin-bottom: 1.5rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  strong {
+    color: ${({ theme }) => theme.COLORS.textPrimary};
+    font-weight: 700;
+  }
+
+  h1 {
+    ${({ theme }) => theme.fonts.kalamBigger};
+    color: ${({ theme }) => theme.COLORS.secondaryColor};
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+`;
 
 export const WrapperIcon = styled.div`
   display: grid;

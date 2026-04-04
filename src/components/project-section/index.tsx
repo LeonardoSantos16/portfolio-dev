@@ -26,8 +26,8 @@ const ProjectsSection = ({ data, isLoading }: PropsCardData) => {
   return (
     <S.Container>
       <S.HeadProject>
-        <span>Projects</span>
-        <h2>Take a look at my highlighted projects</h2>
+        <span>Projetos</span>
+        <h2>Meus projetos pessoais</h2>
       </S.HeadProject>
 
       <SkeletonTheme baseColor="#202024" highlightColor="#2d2d30">
@@ -61,7 +61,7 @@ const ProjectsSection = ({ data, isLoading }: PropsCardData) => {
       <Button
         Icon={ArrowRight}
         orderIcon="row"
-        text="See all"
+        text="Ver todos"
         backgroundHoverColor="#4E4563"
         backgroundColor="#413A4F"
         width="128px"

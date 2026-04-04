@@ -88,3 +88,14 @@ export const Error = styled.span`
   display: block;
   font-weight: 500;
 `;
+
+export const Image = styled.img`
+  margin-bottom: 0px;
+  max-width: 250px !important;
+  height: auto !important;
+  width: 100% !important;
+
+  ${media.lessThan("tablet")`
+    align-self: center;
+  `}
+`

@@ -16,26 +16,22 @@ const About = () => {
             <TechIcon Icon={IoLogoNodejs} color="#9955E8" size={24} />
           </S.TeckStack>
           <S.ContentText>
-            <span>About me</span>
+            <span>Sobre mim</span>
             <h2>
-              I’m a passionate software developer looking for my first
-              international oppotunity
+              Trajetória Profissional e Acadêmica
             </h2>
             <p>
-              Beyond coding, I'm a coffee enthusiast, a cat lover, and a
-              self-taught artist who enjoys spending my free time doodling. I am
-              currently seeking opportunities to bring my skills and enthusiasm
-              to a tech company in the United States or Europe and am excited
-              about the prospect of relocating to pursue new challenges.
+              Atuação de 2 anos na JBQ Global, com progressão de estagiário a desenvolvedor júnior. Experiência prática no ecossistema JavaScript e estudos voltados para arquitetura de sistemas com .NET
             </p>
           </S.ContentText>
           <Button
             Icon={ReadCvLogo}
             orderIcon="row-reverse"
-            text="My resume"
+            text="Meu Resumo"
             backgroundHoverColor="#9955E8"
             backgroundColor="#8A42DB"
             width="160px"
+            href="about-me"
           />
         </S.ContentWrapper>
       </S.SectionAbout>

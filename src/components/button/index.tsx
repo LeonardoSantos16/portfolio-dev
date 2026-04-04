@@ -11,7 +11,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   width?: string
   height?: string
   orderIcon: Direction
-  href?: string
+  href?: string,
+  target?: string,
   IconBegin?: React.ComponentType<IconProps>
 }
 
@@ -24,13 +25,14 @@ const Button = ({
   orderIcon,
   backgroundHoverColor,
   IconBegin,
+  target= "_self",
   href,
   ...rest
 }: ButtonProps) => {
-  console.log('🚀 ~ href:', href)
-  console.log('🚀 ~ IconBegin:', !IconBegin)
+  
+  const isDisabled = rest.disabled;
 
-  if (href) {
+  if (href && !isDisabled) {
     return (
       <S.ButtonLink
         to={href}
@@ -40,9 +42,10 @@ const Button = ({
         $width={width}
         $orderIcon={orderIcon}
         $justify={!!IconBegin}
+        $disabled={isDisabled}
+        target={target}
       >
         {IconBegin && <IconBegin size={24} />}
-
         <S.Text>{text}</S.Text>
         <Icon size={24} />
       </S.ButtonLink>
@@ -58,9 +61,9 @@ const Button = ({
       $width={width}
       $orderIcon={orderIcon}
       $justify={!!IconBegin}
+      $disabled={isDisabled}
     >
       {IconBegin && <IconBegin size={24} />}
-
       <S.Text>{text}</S.Text>
       <Icon size={24} />
     </S.Button>

@@ -8,29 +8,29 @@ const Headline = () => {
     <S.Container>
       <img src={linha} alt="imagem hero" />
       <S.ContentHead>
-        <S.Title>Hi, I’m Leonardo</S.Title>
-        <h2>Full-stack developer and innovation enthusiast</h2>
+        <S.Title>Leonardo Mendes</S.Title>
+        <h2>Desenvolvedor Full Stack</h2>
         <p>
-          Over 4 years of experience in the tech industry. I specialize in
-          building innovative web and mobile applications using technologies
-          such as React, React Native, and Node.js.
+         Graduado em Engenharia da Computação com 2 anos de experiência no desenvolvimento de aplicações web utilizando React, NextJs, TypeScript e NodeJs
         </p>
         <S.CTAButtons>
           <Button
             Icon={ReadCvLogo}
             orderIcon="row-reverse"
-            text="My resume"
+            text="Meu Resumo"
             backgroundHoverColor="#4E4563"
             backgroundColor="#413A4F"
             width="148px"
+            href="/projects"
           />
           <Button
             Icon={ArrowRight}
             orderIcon="row"
-            text="Get in touch"
+            text="Projetos"
             backgroundHoverColor="#9955E8"
             backgroundColor="#8A42DB"
             width="148px"
+            href="about-me"
           />
         </S.CTAButtons>
       </S.ContentHead>

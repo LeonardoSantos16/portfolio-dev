@@ -1,4 +1,3 @@
-import React from "react";
 import emailjs from "emailjs-com";
 import Button from "../button";
 import Input from "./components/input";
@@ -9,6 +8,7 @@ import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 import * as z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 interface dataProps {
   name: string;
@@ -41,36 +41,38 @@ const Contact = () => {
   });
 
   const sendEmail = (data: dataProps) => {
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          user_name: data.name,
-          user_email: data.email,
-          message: data.message,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        alert("Mensagem enviada com sucesso!");
-        reset();
-      })
-      .catch((error) => {
-        alert("Erro ao enviar a mensagem, tente novamente");
-        console.error(error);
-      });
-  };
+  const emailPromise = emailjs.send(
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    {
+      user_name: data.name,
+      user_email: data.email,
+      message: data.message,
+    },
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  );
+
+  toast.promise(emailPromise, {
+    loading: 'Enviando sua mensagem...',
+    success: () => {
+      reset();
+      return 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
+    },
+    error: (err) => {
+      console.error(err);
+      return 'Ops! Ocorreu um erro ao enviar. Tente novamente mais tarde.';
+    },
+  });
+};
 
   return (
     <S.Container>
       <S.Profile>
-        <img src={officeWork} alt="image profile" />
-        <span>Contact</span>
-        <h2>Enjoyed my work? Let’s work together</h2>
+        <S.Image src={officeWork} alt="image profile" />
+        <span>Contato</span>
+        <h2>Entre em contato</h2>
         <p>
-          I’m always up for a chat. Pop me an email at hi@linalevi.com or give
-          me a shout on social media.
+          Caso tenha uma proposta de trabalho ou deseje discutir um projeto específico, sinta-se à vontade para entrar em contato através do formulário abaixo ou pelas minhas redes profissionais
         </p>
         <S.Socials>
           <S.ButtonSocial
@@ -91,19 +93,19 @@ const Contact = () => {
       <S.Forms onSubmit={handleSubmit(sendEmail)}>
         <Input 
           {...register("name")} 
-          placeholder="Name" 
+          placeholder="Seu nome" 
           errors={errors.name?.message} 
         />
         
         <Input 
           {...register("email")} 
-          placeholder="E-mail" 
+          placeholder="Seu e-mail" 
           errors={errors.email?.message} 
         />
 
         <S.Textarea 
           {...register("message")} 
-          placeholder="Your message" 
+          placeholder="Sua mensagem" 
         />
         {errors.message && <S.Error>{errors.message.message}</S.Error>}
 
@@ -111,7 +113,7 @@ const Contact = () => {
           type="submit"
           Icon={ArrowRight}
           orderIcon="row"
-          text="Send me a message"
+          text="Enviar mensagem"
           width="225px"
           backgroundColor="#8A42DB"
           backgroundHoverColor="#9955E8"

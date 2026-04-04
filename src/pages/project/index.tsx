@@ -117,7 +117,7 @@ const Project = () => {
         </S.MainProject>
 
         <S.Aside>
-          <h3>Take a look at this project</h3>
+          <h3>Acesse o projeto</h3>
           {isLoading ? (
             <>
               <Skeleton height={48} borderRadius={8} style={{ marginBottom: '1rem' }} />
@@ -125,28 +125,30 @@ const Project = () => {
             </>
           ) : (
             <>
-              <a href={projectData?.linkDemo} target="_blank" rel="noreferrer">
                 <Button
                   Icon={ArrowUpRight}
                   IconBegin={IoGlobe}
                   orderIcon="row"
-                  text="Live demo"
+                  text="Aplicação"
                   backgroundHoverColor="#9955E8"
                   backgroundColor="#8A42DB"
                   width="100%"
+                  disabled={!projectData?.linkDemo}
+                  target="_target"
+                  href={projectData?.linkDemo}
                 />
-              </a>
-              <a href={projectData?.linkGithub} target="_blank" rel="noreferrer">
                 <Button
+                  disabled={!projectData?.linkGithub}
                   Icon={ArrowUpRight}
                   IconBegin={IoLogoGithub}
                   orderIcon="row"
-                  text="Code"
+                  text="Repositório"
                   backgroundHoverColor="#4E4563"
                   backgroundColor="#413A4F"
                   width="100%"
+                  target="_target"
+                  href={projectData?.linkGithub}
                 />
-              </a>
             </>
           )}
         </S.Aside>

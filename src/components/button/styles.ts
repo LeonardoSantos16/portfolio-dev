@@ -1,3 +1,4 @@
+// styles.ts
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
@@ -10,6 +11,7 @@ interface ButtonStyleProps {
   $backgroundHoverColor: string
   $height?: string
   $justify?: boolean
+  $disabled?: boolean // <-- Adicionado aqui
 }
 
 const buttonStyles = css<ButtonStyleProps>`
@@ -26,11 +28,19 @@ const buttonStyles = css<ButtonStyleProps>`
     $backgroundColor || theme.COLORS.surfaceSecondary};
   height: ${({ $height }) => $height || '56px'};
   width: ${({ $width }) => $width || '100%'};
+  transition: all 0.2s ease-in-out;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: ${({ $backgroundHoverColor }) =>
       $backgroundHoverColor || 'auto'};
   }
+
+  ${({ $disabled }) => $disabled && css`
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(0.4);
+    pointer-events: none; /* Impede cliques no Link */
+  `}
 `
 
 export const Button = styled.button<ButtonStyleProps>`

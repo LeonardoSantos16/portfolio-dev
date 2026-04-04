@@ -10,6 +10,7 @@ import { api } from '../../hooks/api'
 import { PropsExperience } from '../../types/api-interface'
 import { iconMapping } from '../../utils'
 import { PropsIcon } from '../project'
+import ReactMarkdown from 'react-markdown'
 
 const AboutMe = () => {
   const { data: experiencesWork, isLoading: isLoadingWork } = useQuery<PropsExperience[]>({
@@ -39,6 +40,10 @@ const AboutMe = () => {
     }
   })
 
+  const ABOUT_TEXT = `
+  Tenho 24 anos e sou graduado em **Engenharia da Computação** pela Universidade Anhembi Morumbi, com formação técnica em Informática para Internet pela **Etec**. Minha trajetória profissional soma dois anos de atuação no mercado, com foco na **JBQ Global**, onde fui promovido de estagiário (1 ano e 2 meses) a **Desenvolvedor Júnior** (8 meses). Durante esse período, atuei no desenvolvimento frontend utilizando **React, Next.js e TypeScript**, além da implementação de APIs em **Node.js**. Tenho experiência prática trabalhando com **Metodologias Ágeis (Scrum)** e controle de versão com Git.  
+  No backend, embora meu histórico profissional recente tenha sido com Node.js, minha stack principal de estudo e foco para novos projetos é o **.NET**, onde busco aprofundar meus conhecimentos para o desenvolvimento de sistemas. Também possuo conhecimentos em **React Native** (ecossistema **Expo**) para soluções mobile e **inglês em nível técnico** para leitura e escrita de documentações. Complemento minha formação acadêmica com especializações práticas, como as trilhas da **Rocketseat** (Fullstack, Node.js e React) e formações na **DIO**, além de estar atualmente focado no **curso.dev** para evoluir em arquitetura de software e boas práticas de desenvolvimento.
+`;
 
   return (
     <SkeletonTheme baseColor="#202024" highlightColor="#2d2d30">
@@ -46,10 +51,9 @@ const AboutMe = () => {
         <main>
           <Section title="Sobre mim">
             <S.InfoProfile>
-              The Generator App is an online tool that helps you to export
-              ready-made templates ready to work as your future website. It helps
-              you to combine slides, panels and other components and export it as
-              a set of static files: HTML/CSS/JS.
+              <ReactMarkdown>
+                {ABOUT_TEXT}
+                </ReactMarkdown>
             </S.InfoProfile>
           </Section>
 
@@ -75,7 +79,7 @@ const AboutMe = () => {
             )}
           </Section>
 
-          <Section title="Education">
+          <Section title="Formação e Especializações">
             {isLoadingEducation ? (
               Array.from({ length: 2 }).map((_, i) => (
                 <div key={i} style={{ marginBottom: '1.5rem' }}>
