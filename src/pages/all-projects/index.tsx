@@ -1,26 +1,26 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import { useInfiniteQuery } from "@tanstack/react-query";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-import CardProject from '../../components/card-project'
-import * as S from './styles'
-import devImage from '../../assets/Project cover/DevLinks.png'
-import Tag from './components/tag'
-import { useState } from 'react'
-import { ArrowDown } from '@phosphor-icons/react'
-import Button from '../../components/button'
-import { api } from '../../hooks/api'
+import CardProject from "../../components/card-project";
+import * as S from "./styles";
+import devImage from "../../assets/Project cover/DevLinks.png";
+import Tag from "./components/tag";
+import { useState } from "react";
+import { ArrowDown } from "@phosphor-icons/react";
+import Button from "../../components/button";
+import { api } from "../../hooks/api";
 import {
   ProjectCategory,
   PropsResponseRepositories,
-} from '../../types/api-interface'
+} from "../../types/api-interface";
 
-const ITEMS_PER_PAGE = 6
+const ITEMS_PER_PAGE = 6;
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>(
-    ProjectCategory.ALL
-  )
+    ProjectCategory.ALL,
+  );
 
   const {
     data,
@@ -28,32 +28,34 @@ const Projects = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoading,
-    isFetching
+    isFetching,
   } = useInfiniteQuery<PropsResponseRepositories>({
-    queryKey: ['projects', activeCategory],
+    queryKey: ["projects", activeCategory],
     queryFn: async ({ pageParam }) => {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       const response = await api.get(
-        `/repository?category=${activeCategory}&page=${pageParam}&limit=${ITEMS_PER_PAGE}`
-      )
-      return response.data
+        `/repository?category=${activeCategory}&page=${pageParam}&limit=${ITEMS_PER_PAGE}`,
+      );
+      return response.data;
     },
     getNextPageParam: (lastPage, allPages) => {
-      const loadedItems = allPages.length * ITEMS_PER_PAGE
-      return loadedItems < lastPage.totalItems ? allPages.length + 1 : undefined
+      const loadedItems = allPages.length * ITEMS_PER_PAGE;
+      return loadedItems < lastPage.totalItems
+        ? allPages.length + 1
+        : undefined;
     },
     initialPageParam: 1,
-  })
+  });
 
-  const repositories = data?.pages.flatMap((page) => page.repository) ?? []
+  const repositories = data?.pages.flatMap((page) => page.repository) ?? [];
 
   const handleTagClick = (category: ProjectCategory) => {
-    if (category === activeCategory) return
-    setActiveCategory(category)
-  }
+    if (category === activeCategory) return;
+    setActiveCategory(category);
+  };
 
-  const showSkeleton = isLoading || (isFetching && repositories.length === 0)
+  const showSkeleton = isLoading || (isFetching && repositories.length === 0);
 
   return (
     <S.Container>
@@ -73,25 +75,23 @@ const Projects = () => {
 
       <SkeletonTheme baseColor="#202024" highlightColor="#2d2d30">
         <S.WrapperCard>
-          {showSkeleton ? (
-            Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
-              <S.SkeletonCardWrapper key={index}>
-                <Skeleton height={200} borderRadius={8} />
-                <Skeleton height={24} width="80%" style={{ marginTop: 12 }} />
-                <Skeleton height={16} width="100%" count={2} />
-              </S.SkeletonCardWrapper>
-            ))
-          ) : (
-            repositories.map((repository) => (
-              <CardProject
-                key={repository.id}
-                title={repository.title}
-                description={repository.shortDescription}
-                image={repository.imageUrl || devImage}
-                id={repository.id}
-              />
-            ))
-          )}
+          {showSkeleton
+            ? Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+                <S.SkeletonCardWrapper key={index}>
+                  <Skeleton height={200} borderRadius={8} />
+                  <Skeleton height={24} width="80%" style={{ marginTop: 12 }} />
+                  <Skeleton height={16} width="100%" count={2} />
+                </S.SkeletonCardWrapper>
+              ))
+            : repositories.map((repository) => (
+                <CardProject
+                  key={repository.id}
+                  title={repository.title}
+                  description={repository.shortDescription}
+                  image={repository.imageUrl || devImage}
+                  id={repository.id}
+                />
+              ))}
         </S.WrapperCard>
       </SkeletonTheme>
 
@@ -110,7 +110,7 @@ const Projects = () => {
         </S.WrapperButton>
       )}
     </S.Container>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from '../../styles/media-query'
+import styled from "styled-components";
+import media from "../../styles/media-query";
 
 export const ContainerFooter = styled.footer`
   display: flex;
@@ -13,30 +13,30 @@ export const ContainerFooter = styled.footer`
   ${media.greaterThan(`mobile`)`
         flex-direction: row;
     `}
-`
+`;
 
 export const Copyright = styled.div`
   ${({ theme }) => theme.fonts.heeboSmall};
   color: ${({ theme }) => theme.COLORS.textSecondary};
-`
+`;
 
 export const ContentSocial = styled.div`
   display: flex;
   gap: 1.5rem;
 
-  ${media.greaterThan('mobile')`
+  ${media.greaterThan("mobile")`
         gap: 2rem;
     `}
-`
+`;
 
 export const MenuItem = styled.a`
   ${({ theme }) => theme.fonts.heeboSmall};
   color: ${({ theme }) => theme.COLORS.textSecondary};
   text-decoration: none;
   cursor: pointer;
-`
+`;
 
 export const Top = styled.button`
   background: none;
   cursor: pointer;
-`
+`;

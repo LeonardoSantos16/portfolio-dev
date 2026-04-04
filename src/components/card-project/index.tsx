@@ -1,39 +1,39 @@
-import { Link as LinkIcon, GithubLogo } from '@phosphor-icons/react'
-import * as S from './styles'
-import { useNavigate } from 'react-router-dom'
-import Button from '../button'
-import { useCallback, useEffect, useState } from 'react'
-import { api } from '../../hooks/api'
-import { PropsIcon } from '../../pages/project'
+import { Link as LinkIcon, GithubLogo } from "@phosphor-icons/react";
+import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
+import Button from "../button";
+import { useCallback, useEffect, useState } from "react";
+import { api } from "../../hooks/api";
+import { PropsIcon } from "../../pages/project";
 
 interface CardProps {
-  title: string
-  description: string
-  image: string
-  id: number
-  linkGithub?: string
-  linkDemo?: string
+  title: string;
+  description: string;
+  image: string;
+  id: number;
+  linkGithub?: string;
+  linkDemo?: string;
 }
 
 const CardProject = (props: CardProps) => {
-  const navigate = useNavigate()
-  const [icons, setIcons] = useState<PropsIcon[]>([])
+  const navigate = useNavigate();
+  const [icons, setIcons] = useState<PropsIcon[]>([]);
   const handleClick = () => {
-    navigate(`/project/${props.id}`)
-  }
+    navigate(`/project/${props.id}`);
+  };
 
   const fetchIcons = useCallback(async () => {
     try {
-      const responseIcons = await api.get(`/iconRepository/${props.id}`)
-      setIcons(responseIcons.data.getIcon)
+      const responseIcons = await api.get(`/iconRepository/${props.id}`);
+      setIcons(responseIcons.data.getIcon);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }, [props.id])
+  }, [props.id]);
 
   useEffect(() => {
-    fetchIcons()
-  }, [fetchIcons])
+    fetchIcons();
+  }, [fetchIcons]);
 
   return (
     <S.Container onClick={handleClick}>
@@ -48,9 +48,9 @@ const CardProject = (props: CardProps) => {
               return (
                 <S.TextTag key={index}>
                   {icon.name}
-                  {index < icons.length - 1 ? ', ' : ''}
+                  {index < icons.length - 1 ? ", " : ""}
                 </S.TextTag>
-              )
+              );
             })}
         </div>
         <S.ContentLink>
@@ -79,7 +79,7 @@ const CardProject = (props: CardProps) => {
         </S.ContentLink>
       </S.ContentText>
     </S.Container>
-  )
-}
+  );
+};
 
-export default CardProject
+export default CardProject;

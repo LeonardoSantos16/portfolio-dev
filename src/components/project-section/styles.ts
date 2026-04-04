@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from '../../styles/media-query'
+import styled from "styled-components";
+import media from "../../styles/media-query";
 
 export const Container = styled.div`
   display: flex;
@@ -13,10 +13,10 @@ export const Container = styled.div`
   margin: 0 auto;
   width: 100%;
 
-  ${media.greaterThan('mobile')`
+  ${media.greaterThan("mobile")`
     gap: 2.5rem;
   `}
-`
+`;
 
 export const HeadProject = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const HeadProject = styled.div`
   align-items: center;
   gap: 0.5rem;
   text-align: center;
-  
+
   span {
     color: ${({ theme }) => theme.COLORS.secondaryColor};
     ${({ theme }) => theme.fonts.kalamSmal};
@@ -34,7 +34,7 @@ export const HeadProject = styled.div`
     color: ${({ theme }) => theme.COLORS.textPrimary};
     ${({ theme }) => theme.fonts.heeboMedium};
   }
-`
+`;
 
 export const CardsWrapper = styled.div`
   display: flex;
@@ -43,10 +43,10 @@ export const CardsWrapper = styled.div`
   gap: 1.5rem;
   width: 100%;
 
-  ${media.greaterThan('mobile')`
+  ${media.greaterThan("mobile")`
     gap: 1.5rem;
   `}
-`
+`;
 
 export const SkeletonCard = styled.div`
   width: 100%;
@@ -56,4 +56,4 @@ export const SkeletonCard = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-`
+`;

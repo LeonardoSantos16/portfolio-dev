@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export const Container = styled.div`
     margin-top: 2rem;
     padding: 0 0 0 1rem;
   }
-`
+`;
 
 export const WrapperCard = styled.div`
   display: grid;
@@ -39,14 +39,14 @@ export const WrapperCard = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`
+`;
 export const SkeletonCardWrapper = styled.div`
   width: 100%;
   max-width: 350px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-`
+`;
 
 export const Tags = styled.div`
   display: flex;
@@ -56,9 +56,9 @@ export const Tags = styled.div`
   margin-top: 3rem;
   margin-bottom: 7rem;
   gap: 0.3rem;
-`
+`;
 
 export const WrapperButton = styled.div`
   margin: 32px 0;
   align-self: center;
-`
+`;

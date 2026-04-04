@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const StyleGlobal = createGlobalStyle`
     *{
@@ -35,4 +35,4 @@ export const StyleGlobal = createGlobalStyle`
         color: ${({ theme }) => theme.COLORS.textPrimary};
     }
 
-`
+`;

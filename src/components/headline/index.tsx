@@ -1,7 +1,7 @@
-import { ArrowRight, ReadCvLogo } from '@phosphor-icons/react'
-import Button from '../button'
-import * as S from './styles'
-import linha from '../../assets/Linha.svg'
+import { ArrowRight, ReadCvLogo } from "@phosphor-icons/react";
+import Button from "../button";
+import * as S from "./styles";
+import linha from "../../assets/Linha.svg";
 
 const Headline = () => {
   return (
@@ -11,7 +11,9 @@ const Headline = () => {
         <S.Title>Leonardo Mendes</S.Title>
         <h2>Desenvolvedor Full Stack</h2>
         <p>
-         Graduado em Engenharia da Computação com 2 anos de experiência no desenvolvimento de aplicações web utilizando React, NextJs, TypeScript e NodeJs
+          Graduado em Engenharia da Computação com 2 anos de experiência no
+          desenvolvimento de aplicações web utilizando React, NextJs, TypeScript
+          e NodeJs
         </p>
         <S.CTAButtons>
           <Button
@@ -35,7 +37,7 @@ const Headline = () => {
         </S.CTAButtons>
       </S.ContentHead>
     </S.Container>
-  )
-}
+  );
+};
 
-export default Headline
+export default Headline;

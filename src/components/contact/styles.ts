@@ -98,4 +98,4 @@ export const Image = styled.img`
   ${media.lessThan("tablet")`
     align-self: center;
   `}
-`
+`;

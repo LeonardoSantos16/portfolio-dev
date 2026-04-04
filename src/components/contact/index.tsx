@@ -5,7 +5,7 @@ import { ArrowRight } from "@phosphor-icons/react";
 import * as S from "./styles";
 import officeWork from "../../assets/Office work-bro.png";
 import { IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
-import * as z from 'zod';
+import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -17,9 +17,7 @@ interface dataProps {
 }
 
 const schema = z.object({
-  name: z
-    .string()
-    .min(1, "O nome é obrigatório"),
+  name: z.string().min(1, "O nome é obrigatório"),
   email: z
     .string()
     .min(1, "O e-mail é obrigatório")
@@ -35,35 +33,35 @@ const Contact = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<dataProps>({
-    resolver: zodResolver(schema)
+    resolver: zodResolver(schema),
   });
 
   const sendEmail = (data: dataProps) => {
-  const emailPromise = emailjs.send(
-    import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    {
-      user_name: data.name,
-      user_email: data.email,
-      message: data.message,
-    },
-    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  );
+    const emailPromise = emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        user_name: data.name,
+        user_email: data.email,
+        message: data.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    );
 
-  toast.promise(emailPromise, {
-    loading: 'Enviando sua mensagem...',
-    success: () => {
-      reset();
-      return 'Mensagem enviada com sucesso! Entrarei em contato em breve.';
-    },
-    error: (err) => {
-      console.error(err);
-      return 'Ops! Ocorreu um erro ao enviar. Tente novamente mais tarde.';
-    },
-  });
-};
+    toast.promise(emailPromise, {
+      loading: "Enviando sua mensagem...",
+      success: () => {
+        reset();
+        return "Mensagem enviada com sucesso! Entrarei em contato em breve.";
+      },
+      error: (err) => {
+        console.error(err);
+        return "Ops! Ocorreu um erro ao enviar. Tente novamente mais tarde.";
+      },
+    });
+  };
 
   return (
     <S.Container>
@@ -72,7 +70,9 @@ const Contact = () => {
         <span>Contato</span>
         <h2>Entre em contato</h2>
         <p>
-          Caso tenha uma proposta de trabalho ou deseje discutir um projeto específico, sinta-se à vontade para entrar em contato através do formulário abaixo ou pelas minhas redes profissionais
+          Caso tenha uma proposta de trabalho ou deseje discutir um projeto
+          específico, sinta-se à vontade para entrar em contato através do
+          formulário abaixo ou pelas minhas redes profissionais
         </p>
         <S.Socials>
           <S.ButtonSocial
@@ -89,24 +89,21 @@ const Contact = () => {
           </S.ButtonSocial>
         </S.Socials>
       </S.Profile>
-      
+
       <S.Forms onSubmit={handleSubmit(sendEmail)}>
-        <Input 
-          {...register("name")} 
-          placeholder="Seu nome" 
-          errors={errors.name?.message} 
-        />
-        
-        <Input 
-          {...register("email")} 
-          placeholder="Seu e-mail" 
-          errors={errors.email?.message} 
+        <Input
+          {...register("name")}
+          placeholder="Seu nome"
+          errors={errors.name?.message}
         />
 
-        <S.Textarea 
-          {...register("message")} 
-          placeholder="Sua mensagem" 
+        <Input
+          {...register("email")}
+          placeholder="Seu e-mail"
+          errors={errors.email?.message}
         />
+
+        <S.Textarea {...register("message")} placeholder="Sua mensagem" />
         {errors.message && <S.Error>{errors.message.message}</S.Error>}
 
         <Button

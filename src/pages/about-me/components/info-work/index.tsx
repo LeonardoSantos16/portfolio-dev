@@ -1,16 +1,16 @@
-import { FaRegBuilding, FaSearchLocation } from 'react-icons/fa'
-import * as S from './styles'
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import { FaRegBuilding, FaSearchLocation } from "react-icons/fa";
+import * as S from "./styles";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 interface InfoWorkProps {
-  title: string
-  dateEnd: string
-  dateBegin: string
-  mode: string
-  companyName: string
-  location?: string
+  title: string;
+  dateEnd: string;
+  dateBegin: string;
+  mode: string;
+  companyName: string;
+  location?: string;
 }
-import TechIcon from '../../../../components/tech-icon'
+import TechIcon from "../../../../components/tech-icon";
 const InfoWork = (props: InfoWorkProps) => {
   return (
     <S.Info>
@@ -44,16 +44,16 @@ const InfoWork = (props: InfoWorkProps) => {
         </S.Content>
         <S.DateWrapper>
           <S.TextStyle>
-            {format(props.dateBegin, 'MMMM yyyy', { locale: ptBR })}
+            {format(props.dateBegin, "MMMM yyyy", { locale: ptBR })}
           </S.TextStyle>
           <S.TextStyle>-</S.TextStyle>
           <S.TextStyle>
-            {format(props.dateEnd, 'MMMM yyyy', { locale: ptBR })}
+            {format(props.dateEnd, "MMMM yyyy", { locale: ptBR })}
           </S.TextStyle>
         </S.DateWrapper>
       </S.BottomStyle>
     </S.Info>
-  )
-}
+  );
+};
 
-export default InfoWork
+export default InfoWork;

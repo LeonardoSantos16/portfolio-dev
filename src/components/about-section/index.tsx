@@ -1,15 +1,15 @@
-import * as S from './styles';
-import { 
-  IoLogoJavascript, 
-  IoLogoReact, 
-  IoLogoNodejs, 
-  IoDocumentTextOutline, 
-  IoEyeOutline, 
-  IoDownloadOutline 
-} from 'react-icons/io5';
-import Button from '../button'
-import TechIcon from '../tech-icon'
-import codingImage from '../../assets/coding-bro.png';
+import * as S from "./styles";
+import {
+  IoLogoJavascript,
+  IoLogoReact,
+  IoLogoNodejs,
+  IoDocumentTextOutline,
+  IoEyeOutline,
+  IoDownloadOutline,
+} from "react-icons/io5";
+import Button from "../button";
+import TechIcon from "../tech-icon";
+import codingImage from "../../assets/coding-bro.png";
 
 const About = () => {
   const resumePath = "/curriculo-leonardo-mendes.pdf";
@@ -26,14 +26,14 @@ const About = () => {
           </S.TeckStack>
           <S.ContentText>
             <span>Sobre mim</span>
-            <h2>
-              Trajetória Profissional e Acadêmica
-            </h2>
+            <h2>Trajetória Profissional e Acadêmica</h2>
             <p>
-              Atuação de 2 anos na JBQ Global, com progressão de estagiário a desenvolvedor júnior. Experiência prática no ecossistema JavaScript e estudos voltados para a robustez da plataforma .NET.
+              Atuação de 2 anos na JBQ Global, com progressão de estagiário a
+              desenvolvedor júnior. Experiência prática no ecossistema
+              JavaScript e estudos voltados para a robustez da plataforma .NET.
             </p>
           </S.ContentText>
-          
+
           <S.ActionsContainer>
             <Button
               Icon={IoDocumentTextOutline}
@@ -45,11 +45,11 @@ const About = () => {
               href="about-me"
             />
 
-            <a 
-              href={resumePath} 
-              target="_blank" 
+            <a
+              href={resumePath}
+              target="_blank"
               rel="noopener noreferrer"
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
             >
               <Button
                 Icon={IoEyeOutline}
@@ -61,10 +61,10 @@ const About = () => {
               />
             </a>
 
-            <a 
-              href={resumePath} 
+            <a
+              href={resumePath}
               download="Curriculo-Leonardo-Mendes.pdf"
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: "none" }}
             >
               <Button
                 Icon={IoDownloadOutline}
@@ -79,7 +79,7 @@ const About = () => {
         </S.ContentWrapper>
       </S.SectionAbout>
     </S.Container>
-  )
-}
+  );
+};
 
-export default About
+export default About;

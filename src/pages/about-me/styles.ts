@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import media from '../../styles/media-query'
+import styled from "styled-components";
+import media from "../../styles/media-query";
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   margin: 4rem auto;
   padding: 0 16px;
 
-  ${media.greaterThan('tablet')`
+  ${media.greaterThan("tablet")`
     flex-direction: row;
     padding: 0;
     padding-right: 1rem;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     width: 100%;
     max-width: 44.25rem;
     flex: 1;
-    ${media.greaterThan('tablet')`
+    ${media.greaterThan("tablet")`
       padding: 0 0 0 16px;
     `}
   }
@@ -33,11 +33,11 @@ export const Container = styled.div`
   > aside {
     max-width: 300px;
     width: 100%;
-    ${media.lessThan('tablet')`
+    ${media.lessThan("tablet")`
        max-width: 100%;
     `}
   }
-`
+`;
 
 export const InfoProfile = styled.div`
   ${({ theme }) => theme.fonts.heeboBig};
@@ -70,7 +70,7 @@ export const WrapperIcon = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
   gap: 1.5rem;
-`
+`;
 
 export const StyleIcon = styled.div`
   display: flex;
@@ -81,4 +81,4 @@ export const StyleIcon = styled.div`
   background: #2c243b;
   padding: 8px;
   border-radius: 16px;
-`
+`;

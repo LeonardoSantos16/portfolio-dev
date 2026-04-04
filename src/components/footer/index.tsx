@@ -2,13 +2,12 @@ import * as S from "./styles";
 import { ArrowUp } from "@phosphor-icons/react";
 
 const Footer = () => {
-
   const handleBackToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
   return (
     <S.ContainerFooter>
@@ -28,7 +27,6 @@ const Footer = () => {
         <S.Top onClick={handleBackToTop}>
           <ArrowUp size={20} color="#CDD0D4" />
         </S.Top>
-        
       </S.ContentSocial>
     </S.ContainerFooter>
   );

@@ -15,19 +15,20 @@ export const ContentInput = styled.input<InputContainerProps>`
 
   &:focus {
     outline: none;
-    border: 1.5px solid ${({ theme, $hasError }) => 
-      $hasError ? "#F75A68" : theme.COLORS.secondaryColor};
+    border: 1.5px solid
+      ${({ theme, $hasError }) =>
+        $hasError ? "#F75A68" : theme.COLORS.secondaryColor};
   }
 
   ${({ $hasError }) =>
     $hasError &&
     css`
-      border-color: #F75A68;
+      border-color: #f75a68;
     `}
 `;
 
 export const Errors = styled.span`
-  color: #F75A68;
+  color: #f75a68;
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: block;

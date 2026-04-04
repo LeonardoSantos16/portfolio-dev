@@ -13,7 +13,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {errors && <S.Errors>{errors}</S.Errors>}
       </>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

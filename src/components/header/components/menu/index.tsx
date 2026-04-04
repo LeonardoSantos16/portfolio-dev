@@ -1,5 +1,5 @@
 //import { SunDim } from '@phosphor-icons/react'
-import * as S from './styles'
+import * as S from "./styles";
 
 // TODO: Configurar os ButtonsActions
 
@@ -21,7 +21,7 @@ const Menu = () => {
         </S.ButtonAction>
       </S.Actions> */}
     </>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;
