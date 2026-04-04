@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 import media from "../../styles/media-query";
 
 export const Container = styled.div`
@@ -58,8 +58,8 @@ export const ButtonSocial = styled.a`
   }
 
   ${media.greaterThan("tablet")`
-        background: ${({ theme }) => theme.COLORS.surfaceBackground};
-    `}
+    background: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.surfaceBackground};
+  `}
 `;
 
 export const Forms = styled.form`

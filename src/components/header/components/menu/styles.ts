@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 import { NavLink } from "react-router-dom";
 import media from "../../../../styles/media-query";
 export const MenuItems = styled(NavLink)`
@@ -45,6 +45,6 @@ export const ButtonAction = styled.button`
   }
 
   ${media.greaterThan("tablet")`
-        background: ${({ theme }) => theme.COLORS.surfaceBackground};
-    `}
+    background: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.surfaceBackground};
+  `}
 `;
