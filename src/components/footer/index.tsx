@@ -1,7 +1,15 @@
 import * as S from "./styles";
-//import { ArrowUp } from "@phosphor-icons/react";
+import { ArrowUp } from "@phosphor-icons/react";
 
 const Footer = () => {
+
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <S.ContainerFooter>
       <S.Copyright>
@@ -17,9 +25,10 @@ const Footer = () => {
         >
           LinkedIn
         </S.MenuItem>
-        {
-        //<ArrowUp size={24} color="#CDD0D4" />
-        }
+        <S.Top onClick={handleBackToTop}>
+          <ArrowUp size={20} color="#CDD0D4" />
+        </S.Top>
+        
       </S.ContentSocial>
     </S.ContainerFooter>
   );

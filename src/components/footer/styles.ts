@@ -35,3 +35,8 @@ export const MenuItem = styled.a`
   text-decoration: none;
   cursor: pointer;
 `
+
+export const Top = styled.button`
+  background: none;
+  cursor: pointer;
+`

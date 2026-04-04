@@ -62,3 +62,14 @@ export const ContentText = styled.div`
   flex-direction: column;
   gap: 12px;
 `;
+
+export const ActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  ${media.lessThan("tablet")`
+    justify-content: center;
+  `}
+`;

@@ -18,7 +18,6 @@ interface CardProps {
 const CardProject = (props: CardProps) => {
   const navigate = useNavigate()
   const [icons, setIcons] = useState<PropsIcon[]>([])
-  console.log('🚀 ~ CardProject ~ icons:', icons)
   const handleClick = () => {
     navigate(`/project/${props.id}`)
   }

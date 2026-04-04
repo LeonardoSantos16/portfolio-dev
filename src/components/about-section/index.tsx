@@ -1,10 +1,19 @@
-import { ReadCvLogo } from '@phosphor-icons/react'
+import * as S from './styles';
+import { 
+  IoLogoJavascript, 
+  IoLogoReact, 
+  IoLogoNodejs, 
+  IoDocumentTextOutline, 
+  IoEyeOutline, 
+  IoDownloadOutline 
+} from 'react-icons/io5';
 import Button from '../button'
 import TechIcon from '../tech-icon'
-import { IoLogoJavascript, IoLogoNodejs, IoLogoReact } from 'react-icons/io5'
-import * as S from './styles'
-import codingImage from '../../assets/coding-bro.png'
+import codingImage from '../../assets/coding-bro.png';
+
 const About = () => {
+  const resumePath = "/curriculo-leonardo-mendes.pdf";
+
   return (
     <S.Container>
       <S.SectionAbout>
@@ -21,18 +30,52 @@ const About = () => {
               Trajetória Profissional e Acadêmica
             </h2>
             <p>
-              Atuação de 2 anos na JBQ Global, com progressão de estagiário a desenvolvedor júnior. Experiência prática no ecossistema JavaScript e estudos voltados para arquitetura de sistemas com .NET
+              Atuação de 2 anos na JBQ Global, com progressão de estagiário a desenvolvedor júnior. Experiência prática no ecossistema JavaScript e estudos voltados para a robustez da plataforma .NET.
             </p>
           </S.ContentText>
-          <Button
-            Icon={ReadCvLogo}
-            orderIcon="row-reverse"
-            text="Meu Resumo"
-            backgroundHoverColor="#9955E8"
-            backgroundColor="#8A42DB"
-            width="160px"
-            href="about-me"
-          />
+          
+          <S.ActionsContainer>
+            <Button
+              Icon={IoDocumentTextOutline}
+              orderIcon="row-reverse"
+              text="Sobre mim"
+              backgroundColor="#8A42DB"
+              backgroundHoverColor="#9955E8"
+              width="160px"
+              href="about-me"
+            />
+
+            <a 
+              href={resumePath} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                Icon={IoEyeOutline}
+                orderIcon="row"
+                text="Ver CV"
+                backgroundColor="#413A4F"
+                backgroundHoverColor="#4E4563"
+                width="130px"
+              />
+            </a>
+
+            <a 
+              href={resumePath} 
+              download="Curriculo-Leonardo-Mendes.pdf"
+              style={{ textDecoration: 'none' }}
+            >
+              <Button
+                Icon={IoDownloadOutline}
+                orderIcon="row-reverse"
+                text="Baixar CV"
+                backgroundColor="#413A4F"
+                backgroundHoverColor="#4E4563"
+                width="140px"
+              />
+            </a>
+          </S.ActionsContainer>
         </S.ContentWrapper>
       </S.SectionAbout>
     </S.Container>
