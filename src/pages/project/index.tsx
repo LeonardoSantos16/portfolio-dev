@@ -17,7 +17,7 @@ import { IoLogoGithub, IoGlobe } from "react-icons/io5";
 import { ptBR } from "date-fns/locale";
 
 export interface PropsIcon {
-  name_icon: string;
+  nameIcon: string;
   name: string;
   color: string;
 }
@@ -30,7 +30,6 @@ const Project = () => {
     useQuery<PropsData>({
       queryKey: ["project", id],
       queryFn: async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1500));
         const response = await api.get(`/repository/${id}`);
         return response.data;
       },
@@ -41,7 +40,8 @@ const Project = () => {
     queryKey: ["project-icons", id],
     queryFn: async () => {
       const response = await api.get(`/iconRepository/${id}`);
-      return response.data.getIcon;
+
+      return response.data;
     },
     enabled: !!id,
   });
@@ -63,10 +63,12 @@ const Project = () => {
           {isLoading ? (
             <Skeleton height={400} borderRadius="16px 16px 0 0" />
           ) : (
-            <img
-              src={projectData?.imageUrl || feedbackWidget}
-              alt="image project"
-            />
+            <S.Wrapper>
+              <img
+                src={projectData?.imageUrl || feedbackWidget}
+                alt="image project"
+              />
+            </S.Wrapper>
           )}
 
           <S.ContentWrapper>
@@ -90,7 +92,7 @@ const Project = () => {
                   </div>
                 ) : (
                   iconsData?.map((icon, index) => {
-                    const IconComponent = iconMapping[icon.name_icon];
+                    const IconComponent = iconMapping[icon.nameIcon];
                     if (IconComponent) {
                       return (
                         <TechIcon

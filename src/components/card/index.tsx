@@ -45,7 +45,7 @@ const Card = ({ title, description, date, image, id }: CardProps) => {
         <S.TechContainer>
           {icons &&
             icons.map((icon, index) => {
-              const IconComponent = iconMapping[icon.name_icon];
+              const IconComponent = iconMapping[icon.nameIcon];
               if (IconComponent) {
                 return (
                   <TechIcon

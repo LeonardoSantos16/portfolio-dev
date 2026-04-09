@@ -18,7 +18,6 @@ const AboutMe = () => {
   >({
     queryKey: ["experiences-work"],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
       const response = await api.get(`experiences?type=WORK`);
       return response.data;
     },
@@ -28,7 +27,6 @@ const AboutMe = () => {
     useQuery<PropsExperience[]>({
       queryKey: ["experiences-education"],
       queryFn: async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1500));
         const response = await api.get(`experiences?type=EDUCATION`);
         return response.data;
       },
@@ -37,7 +35,6 @@ const AboutMe = () => {
   const { data: icons, isLoading: isLoadingIcons } = useQuery<PropsIcon[]>({
     queryKey: ["tech-icons"],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
       const response = await api.get("icon");
       return response.data;
     },
@@ -120,7 +117,7 @@ const AboutMe = () => {
                     />
                   ))
                 : icons?.map((icon, index) => {
-                    const IconComponent = iconMapping[icon.name_icon];
+                    const IconComponent = iconMapping[icon.nameIcon];
                     if (IconComponent) {
                       return (
                         <S.StyleIcon key={index}>
