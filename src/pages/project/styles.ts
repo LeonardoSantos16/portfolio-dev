@@ -14,8 +14,17 @@ export const Container = styled.div`
         flex-direction: row;
         gap: 1.5rem;
     `}
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
   img {
-    width: 100%;
+    align-self: center;
+    max-width: 100%;
+    max-height: 31.25rem;
     ${media.greaterThan("tablet")`
             border-radius: 16px 16px 0 0;
         `}

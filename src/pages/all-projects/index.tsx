@@ -32,8 +32,6 @@ const Projects = () => {
   } = useInfiniteQuery<PropsResponseRepositories>({
     queryKey: ["projects", activeCategory],
     queryFn: async ({ pageParam }) => {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
       const response = await api.get(
         `/repository?category=${activeCategory}&page=${pageParam}&limit=${ITEMS_PER_PAGE}`,
       );
